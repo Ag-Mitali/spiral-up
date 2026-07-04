@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #ff0000;
+  --accent-dark: #cc0000;
+  
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Mobile spacing fix - add padding on small screens only */
+@media (max-width: 1023px) {
+  .max-w-7xl {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff0000 0%, #ff0000 30%, #000000 70%, #000000 100%);
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff3333 0%, #ff3333 30%, #1a1a1a 70%, #1a1a1a 100%);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+}
+
+/* Horizontal scrollbar for OurWork section */
+.video-scroll::-webkit-scrollbar {
+  height: 8px !important;
+  width: 8px !important;
+}
+
+.video-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 4px !important;
+}
+
+.video-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff0000 0%, #ff0000 30%, #000000 70%, #000000 100%) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5) !important;
+}
+
+.video-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #ff3333 0%, #ff3333 30%, #1a1a1a 70%, #1a1a1a 100%) !important;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7) !important;
+}
+
+.video-scroll::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
