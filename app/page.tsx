@@ -1,7 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Zap, Video, Palette, Smartphone, ArrowRight, Play } from 'lucide-react'
 import Hero from '@/components/sections/Hero'
 import OurWork from '@/components/sections/OurWork'
 import About from '@/components/sections/About'
