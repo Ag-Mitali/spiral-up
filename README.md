@@ -2,6 +2,8 @@
 
 A modern, high-performance marketing website for Spiral Up Digital - an AI-focused digital agency specializing in videos, ads, and web development.
 
+*Website successfully built and deployed with Next.js 16 and Tailwind CSS v4*
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 with TypeScript
