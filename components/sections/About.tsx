@@ -110,17 +110,37 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          {/* Section Number */}
+          {/* Interactive Attention Message */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mb-8"
+            transition={{ delay: 0.2 }}
+            className="mb-8 flex items-center justify-center gap-2 group cursor-pointer"
           >
-            <span className="text-red-500 font-semibold text-sm">Who we are?</span>
+            {/* Animated Icon - Pulsing */}
+            <motion.div 
+              animate={{ 
+                scale: [1, 1.3, 1],
+              }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
+              className="w-4 h-4 bg-red-500 rounded-sm flex items-center justify-center flex-shrink-0"
+            >
+              <span className="text-white text-xs font-bold">!</span>
+            </motion.div>
+
+            {/* Pulsing Text */}
+            <motion.span 
+              className="text-red-500 font-semibold text-sm"
+              animate={{ opacity: [0.6, 1, 0.6] }}
+              transition={{ duration: 2.5, repeat: Infinity, repeatType: "loop" }}
+            >
+              Your reel has a few seconds to earn attention. We treat those seconds seriously.
+            </motion.span>
+
+            {/* Gradient Line */}
             <div
-              className="h-0.5 w-20 mt-2 mx-auto"
+              className="h-0.5 w-20 ml-4"
               style={{
                 background: 'linear-gradient(90deg, #ff0000 0%, transparent 100%)',
                 boxShadow: '0 0 8px rgba(255, 0, 0, 0.6)',
@@ -133,7 +153,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
           >
             Who are we?
@@ -144,36 +164,14 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="max-w-4xl mx-auto space-y-1 mb-8"
-          >
-            <p className="text-lg text-gray-300">
-              We are advertising, ecommerce, psychology, and social experts
-            </p>
-            <p className="text-lg text-gray-300">
-              leading a team of creative professionals.
-            </p>
-            <p className="text-lg text-gray-300" style={{ marginTop: '32px' }}>
-              We study what makes people stop, watch, feel, click, and buy —
-            </p>
-            <p className="text-lg text-gray-300">
-              then build content around that.
-            </p>
-          </motion.div>
-
-          {/* Attention Callout */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex items-center justify-center gap-3 mb-12"
+            className="mx-auto space-y-1 mb-8"
           >
-            <div className="w-4 h-4 bg-red-500 rounded-sm flex items-center justify-center">
-              <span className="text-white text-xs font-bold">!</span>
-            </div>
-            <p className="text-red-400 text-sm font-medium">
-              Your reel has a few seconds to earn attention. We treat those seconds seriously.
+            <p className="text-lg text-gray-300 max-w-6xl mx-auto">
+              We are advertising, ecommerce, psychology, and social experts leading a team of creative professionals.
+            </p>
+            <p className="text-lg text-gray-300 max-w-6xl mx-auto" style={{ marginTop: '32px' }}>
+              We study what makes people stop, watch, feel, click, and buy — then build content around that.
             </p>
           </motion.div>
         </motion.div>

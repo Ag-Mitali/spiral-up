@@ -116,16 +116,6 @@ export default function Hero() {
               }}
             />
 
-            {/* Industries */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-base md:text-lg text-gray-400 mb-10"
-            >
-              Medical. D2C. Luxury. FMCG. Food. Tech.
-            </motion.p>
-
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}

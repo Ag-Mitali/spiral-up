@@ -87,15 +87,6 @@ export default function OurWork() {
             </motion.div>
 
             {/* Categories */}
-            <motion.p
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-gray-400 text-sm leading-relaxed self-end"
-            >
-              Medical. Luxury. Food. Jewellery. Tech. FMCG.
-            </motion.p>
           </div>
         </motion.div>
 
