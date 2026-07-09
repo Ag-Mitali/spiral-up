@@ -138,7 +138,7 @@ export default function PricingDuplicate() {
                     <svg width="100%" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-grow min-w-0" preserveAspectRatio="none" style={{ maxHeight: '40px' }}>
                       <defs>
                         <marker id={`arrowhead-grey-${index}`} markerWidth="15" markerHeight="15" refX="13" refY="7" orient="auto">
-                          <polyline poinlsnepoin15="0,0 15,7 0,14" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <polyline points="0,0 15,7 0,14" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </marker>
                       </defs>
                       <line x1="10" y1="20" x2="190" y2="20" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" markerEnd={`url(#arrowhead-grey-${index})`} />
