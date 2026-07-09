@@ -76,7 +76,7 @@ export default function PricingDuplicate() {
               />
             </div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Updated */}
             <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
               The price<br />is the price.
             </h2>
