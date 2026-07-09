@@ -135,13 +135,8 @@ export default function PricingDuplicate() {
                 <div className="flex items-center justify-between gap-4 w-full">
                   <p className="text-white text-sm whitespace-nowrap flex-shrink-0">{tier.videos}</p>
                   <div className="flex-grow flex items-center justify-center">
-                    <svg width="100%" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-grow min-w-0" preserveAspectRatio="none" style={{ maxHeight: '40px' }}>
-                      <defs>
-                        <marker id={`arrowhead-grey-${index}`} markerWidth="15" markerHeight="15" refX="13" refY="7" orient="auto">
-                          <polyline points="0,0 15,7 0,14" fill="none" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </marker>
-                      </defs>
-                      <line x1="10" y1="20" x2="190" y2="20" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" markerEnd={`url(#arrowhead-grey-${index})`} />
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <p className="text-white text-sm whitespace-nowrap flex-shrink-0">{tier.duration}</p>
