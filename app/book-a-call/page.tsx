@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { ArrowRight, ArrowLeft, AlertCircle } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
@@ -67,7 +67,7 @@ const questions = [
   },
 ]
 
-export default function BookACallPage() {
+function BookACallForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const referrer = searchParams.get('from') || '/'
@@ -339,5 +339,17 @@ export default function BookACallPage() {
         </div>
       </motion.div>
     </div>
+  )
+}
+
+export default function BookACallPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <BookACallForm />
+    </Suspense>
   )
 }
