@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function BrandNeeds() {
   return (
@@ -53,16 +54,18 @@ export default function BrandNeeds() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group w-fit"
-              >
-                Book a call
-                <div className="w-6 h-6 rounded-full border-2 border-red-500 flex items-center justify-center group-hover:translate-x-1 transition-transform">
-                  <ArrowRight size={16} />
-                </div>
-              </motion.button>
+              <Link href="/book-a-call?from=#brandneeds">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group w-fit"
+                >
+                  Book a call
+                  <div className="w-6 h-6 rounded-full border-2 border-red-500 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                    <ArrowRight size={16} />
+                  </div>
+                </motion.button>
+              </Link>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}

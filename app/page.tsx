@@ -6,6 +6,7 @@ import About from '@/components/sections/About'
 import HowItWorks from '@/components/sections/HowItWorks'
 import Pricing from '@/components/sections/Pricing'
 import PricingDuplicate from '@/components/sections/PricingDuplicate'
+import TheProof from '@/components/sections/TheProof'
 import FinalCTA from '@/components/sections/FinalCTA'
 import BrandNeeds from '@/components/sections/BrandNeeds'
 import Navigation from '@/components/Navigation'
@@ -17,6 +18,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <OurWork />
+      <TheProof />
       <About />
       <HowItWorks />
       <Pricing />

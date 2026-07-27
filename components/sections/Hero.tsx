@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Hero() {
   // Professional Neon SVG Icons
@@ -123,14 +124,16 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group text-lg"
-              >
-                Book a call
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <Link href="/book-a-call?from=/">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-10 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group text-lg w-full"
+                >
+                  Book a call
+                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
 
               <motion.button
                 whileHover={{ scale: 1.05 }}

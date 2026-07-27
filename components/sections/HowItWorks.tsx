@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function HowItWorks() {
   const steps = [
@@ -95,38 +96,38 @@ export default function HowItWorks() {
             <motion.div
               animate={{
                 x: [
-                  // Container 1 outline
-                  20, 300, 300, 20, 20,
-                  // Move to container 2
-                  350, 350,
-                  // Container 2 outline  
-                  350, 630, 630, 350, 350,
-                  // Move to container 3
-                  680, 680,
-                  // Container 3 outline
-                  680, 960, 960, 680, 680,
+                  // Box 1: top-left to bottom-right
+                  50, 280, 280, 50,
+                  // Connecting line 1 to 2
+                  320, 360,
+                  // Box 2: top-left to bottom-right
+                  380, 600, 600, 380,
+                  // Connecting line 2 to 3
+                  640, 680,
+                  // Box 3: top-left to bottom-right
+                  710, 930, 930, 710,
                   // Return to start
-                  20
+                  50
                 ],
                 y: [
-                  // Container 1 outline
-                  20, 20, 240, 240, 20,
-                  // Move to container 2
-                  20, 20,
-                  // Container 2 outline
-                  20, 20, 240, 240, 20,
-                  // Move to container 3
-                  20, 20,
-                  // Container 3 outline
-                  20, 20, 240, 240, 20,
+                  // Box 1: top-left to bottom-right
+                  20, 20, 240, 240,
+                  // Connecting line
+                  130, 130,
+                  // Box 2: top-left to bottom-right
+                  20, 20, 240, 240,
+                  // Connecting line
+                  130, 130,
+                  // Box 3: top-left to bottom-right
+                  20, 20, 240, 240,
                   // Return to start
                   20
                 ],
               }}
               transition={{
-                duration: 35,
+                duration: 20,
                 repeat: Infinity,
-                ease: "linear",
+                ease: "easeInOut",
               }}
               className="w-3 h-3 rounded-full bg-red-500 absolute"
               style={{
@@ -202,16 +203,18 @@ export default function HowItWorks() {
             </div>
           </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border-2 border-gray-600 text-white rounded-lg font-semibold hover:border-gray-500 transition-colors flex items-center justify-center gap-3 group"
-          >
-            Book a call
-            <div className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
-              <ArrowRight size={16} />
-            </div>
-          </motion.button>
+          <Link href="/book-a-call?from=#howitworks">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 border-2 border-gray-600 text-white rounded-lg font-semibold hover:border-gray-500 transition-colors flex items-center justify-center gap-3 group"
+            >
+              Book a call
+              <div className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ArrowRight size={16} />
+              </div>
+            </motion.button>
+          </Link>
 
           <motion.button
             whileHover={{ scale: 1.05 }}

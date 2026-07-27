@@ -170,7 +170,7 @@ export default function About() {
             <p className="text-lg text-gray-300 max-w-6xl mx-auto">
               We are advertising, ecommerce, psychology, and social experts leading a team of creative professionals.
             </p>
-            <p className="text-lg text-gray-300 max-w-6xl mx-auto" style={{ marginTop: '32px' }}>
+            <p className="text-lg text-gray-300 max-w-6xl mx-auto">
               We study what makes people stop, watch, feel, click, and buy — then build content around that.
             </p>
           </motion.div>

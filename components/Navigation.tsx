@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -84,14 +85,16 @@ export default function Navigation() {
 
           {/* Book a Call Button */}
           <div className="hidden md:flex items-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 border border-red-500 text-red-500 rounded-lg font-medium hover:bg-red-500/10 transition-colors flex items-center gap-2 group"
-            >
-              Book a call
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            <Link href="/book-a-call?from=#">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-2.5 border border-red-500 text-red-500 rounded-lg font-medium hover:bg-red-500/10 transition-colors flex items-center gap-2 group"
+              >
+                Book a call
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -120,14 +123,16 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full px-6 py-2.5 border border-red-500 text-red-500 rounded-lg font-medium hover:bg-red-500/10 transition-colors flex items-center justify-center gap-2"
-            >
-              Book a call
-              <ArrowRight size={16} />
-            </motion.button>
+            <Link href="/book-a-call?from=#" className="w-full">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full px-6 py-2.5 border border-red-500 text-red-500 rounded-lg font-medium hover:bg-red-500/10 transition-colors flex items-center justify-center gap-2"
+              >
+                Book a call
+                <ArrowRight size={16} />
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>
