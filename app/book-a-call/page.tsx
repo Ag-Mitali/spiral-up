@@ -126,12 +126,6 @@ export default function BookACallPage() {
     }
   }
 
-  const handlePrevious = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1)
-    }
-  }
-
   const handleSubmit = async () => {
     setIsSubmitting(true)
 
