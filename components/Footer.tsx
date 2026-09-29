@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Calendar, MessageCircle, Mail, Instagram, Linkedin } from 'lucide-react'
-import Link from 'next/link'
 
 export default function Footer() {
   return (
@@ -93,18 +92,17 @@ export default function Footer() {
             <h4 className="text-gray-400 text-sm font-semibold mb-8 tracking-wide">Get in touch</h4>
             <div className="space-y-4">
               {/* Book a call */}
-              <Link href="/book-a-call?from=#footer">
-                <motion.a
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-4 group cursor-pointer"
-                >
-                  <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/10 transition-colors">
-                    <Calendar size={18} className="text-red-500" />
-                  </div>
-                  <span className="text-white">Book a call</span>
-                  <ArrowRight size={16} className="text-red-500 ml-auto group-hover:translate-x-1 transition-transform" />
-                </motion.a>
-              </Link>
+              <motion.a
+                href="/book-a-call?from=#footer"
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/10 transition-colors">
+                  <Calendar size={18} className="text-red-500" />
+                </div>
+                <span className="text-white">Book a call</span>
+                <ArrowRight size={16} className="text-red-500 ml-auto group-hover:translate-x-1 transition-transform" />
+              </motion.a>
 
               {/* WhatsApp us */}
               <motion.a

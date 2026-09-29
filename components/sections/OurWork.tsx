@@ -62,14 +62,8 @@ export default function OurWork() {
             transition={{ delay: 0.1 }}
             className="mb-4"
           >
-            <span className="text-red-500 font-semibold text-sm">02 OUR WORK</span>
-            <div
-              className="h-0.5 w-20 mt-2"
-              style={{
-                background: 'linear-gradient(90deg, #ff0000 0%, transparent 100%)',
-                boxShadow: '0 0 8px rgba(255, 0, 0, 0.6)',
-              }}
-            />
+            <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">01 · OUR WORK</span>
+            <div className="h-px w-12 mt-2 bg-red-500/60" />
           </motion.div>
 
           {/* Headline and Description */}
@@ -81,7 +75,7 @@ export default function OurWork() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="lg:col-span-2"
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
                 If these were on your feed, would you stop scrolling?
               </h2>
             </motion.div>
@@ -99,8 +93,7 @@ export default function OurWork() {
           className="flex gap-4 overflow-x-auto pb-4 mb-12 scroll-smooth video-scroll"
           style={{
             scrollBehavior: 'smooth',
-            scrollbarWidth: 'thin',
-            scrollbarColor: '#ff0000 transparent',
+            scrollbarWidth: 'none',
           }}
         >
           {videos.map((video, index) => (
@@ -122,16 +115,19 @@ export default function OurWork() {
                 <iframe
                   width="100%"
                   height="100%"
-                  src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                  src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&controls=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1`}
                   title={video.title}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  className="absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                 />
 
+                {/* Transparent overlay to block YouTube UI chrome (AI tags, arrow buttons) */}
+                <div className="absolute inset-0 z-10" />
+
                 {/* Video Info - Positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-3 z-10">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-3 z-20">
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -162,7 +158,20 @@ export default function OurWork() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group text-base"
+            className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 group text-base transition-all"
+            style={{
+              border: '2px solid #c1ff72',
+              color: '#c1ff72',
+              boxShadow: '0 0 12px rgba(193,255,114,0.35), 0 0 24px rgba(193,255,114,0.15)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.backgroundColor = 'rgba(193,255,114,0.08)'
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(193,255,114,0.55), 0 0 40px rgba(193,255,114,0.2)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.backgroundColor = 'transparent'
+              e.currentTarget.style.boxShadow = '0 0 12px rgba(193,255,114,0.35), 0 0 24px rgba(193,255,114,0.15)'
+            }}
           >
             See what we can make for you
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

@@ -2,13 +2,21 @@
 
 import Hero from '@/components/sections/Hero'
 import OurWork from '@/components/sections/OurWork'
-import About from '@/components/sections/About'
-import HowItWorks from '@/components/sections/HowItWorks'
+import LogoStrip from '@/components/sections/LogoStrip'
+import HowItWorksNew from '@/components/sections/HowItWorksNew'
+import WhyDifferent2 from '@/components/sections/WhyDifferent2'
+import PerformanceWork from '@/components/sections/PerformanceWork'
+
 import Pricing from '@/components/sections/Pricing'
 import PricingDuplicate from '@/components/sections/PricingDuplicate'
 import TheProof from '@/components/sections/TheProof'
-import FinalCTA from '@/components/sections/FinalCTA'
-import BrandNeeds from '@/components/sections/BrandNeeds'
+import VideoPlaceholder from '@/components/sections/VideoPlaceholder'
+import WhatElseWeDo from '@/components/sections/WhatElseWeDo'
+import Testimonials from '@/components/sections/Testimonials'
+import FAQ from '@/components/sections/FAQ'
+import GetStarted from '@/components/sections/GetStarted'
+
+
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -18,13 +26,18 @@ export default function Home() {
       <Navigation />
       <Hero />
       <OurWork />
+      <LogoStrip />
+      <HowItWorksNew />
+      <WhyDifferent2 />
+      <PerformanceWork />
       <TheProof />
-      <About />
-      <HowItWorks />
+      <VideoPlaceholder />
+      <WhatElseWeDo />
+      <Testimonials />
+      <FAQ />
+      <GetStarted />
       <Pricing />
       <PricingDuplicate />
-      <FinalCTA />
-      <BrandNeeds />
       <Footer />
     </main>
   )

@@ -23,6 +23,7 @@ export default function Navigation() {
     { label: 'How It Works', href: '#services' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' },
+    { label: 'Home 2', href: '/home-2' },
   ]
 
   return (

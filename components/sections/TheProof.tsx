@@ -88,14 +88,6 @@ export default function TheProof() {
 
   return (
     <section className="py-12 bg-black relative">
-      {/* Top border line */}
-      <div
-        className="absolute top-0 left-0 right-0 h-px"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, #ff0000 50%, transparent 100%)',
-          boxShadow: '0 0 16px rgba(255, 0, 0, 0.4)',
-        }}
-      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -106,11 +98,12 @@ export default function TheProof() {
           transition={{ duration: 0.6 }}
           className="mb-10"
         >
-          <span className="text-red-500 font-semibold text-sm">03 THE PROOF</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mt-3">
+          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">05 · THE NUMBERS</span>
+          <div className="h-px w-12 mt-2 bg-red-500/60" />
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mt-6">
             We don't just make things that look good.<br />We make things that sell.
           </h2>
-          <p className="text-gray-400 text-base mt-3">
+          <p className="text-lg text-gray-400 leading-relaxed mt-3">
             The numbers Spiral Up has driven, and the track record behind it.
           </p>
         </motion.div>
