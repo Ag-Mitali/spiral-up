@@ -10,7 +10,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <motion.div
@@ -73,9 +73,9 @@ export default function Hero() {
                 Send us your link. We&apos;ll tell you what videos your brand actually needs.
               </p>
 
-              {/* Input + Continue row */}
+              {/* Input + Continue row — stacks on very small screens */}
               <div
-                className="flex items-center gap-0 rounded-full overflow-hidden"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-0 rounded-2xl sm:rounded-full overflow-hidden"
                 style={{ border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 <div className="flex items-center gap-3 flex-1 px-5">
@@ -84,15 +84,13 @@ export default function Hero() {
                     type="url"
                     value={link}
                     onChange={e => setLink(e.target.value)}
-                    placeholder="Instagram handle or product link"
-                    className="flex-1 bg-transparent py-4 text-sm text-white placeholder-gray-400 outline-none"
+                    placeholder="Instagram or product link"
+                    className="flex-1 bg-transparent py-4 text-sm text-white placeholder-gray-400 outline-none min-w-0"
                   />
                 </div>
-                {/* Divider */}
-                <div className="w-px h-6 bg-white/10 flex-shrink-0" />
-                {/* Continue button */}
+                <div className="hidden sm:block w-px h-6 bg-white/10 flex-shrink-0" />
                 <button
-                  className="flex items-center gap-2 px-6 py-4 font-semibold text-sm text-white rounded-r-full transition-all flex-shrink-0"
+                  className="flex items-center justify-center gap-2 px-6 py-4 font-semibold text-sm text-white rounded-b-2xl sm:rounded-r-full sm:rounded-b-none transition-all flex-shrink-0"
                   style={{ backgroundColor: '#e53e3e' }}
                   onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
                   onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}

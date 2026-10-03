@@ -89,7 +89,7 @@ export default function TheProof() {
   return (
     <section className="py-12 bg-black relative">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,7 +126,7 @@ export default function TheProof() {
               <div className="absolute top-2 right-2 w-2 h-2 rounded-full" style={{ backgroundColor: '#C8FF00' }} />
               
               <div>
-                <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C8FF00' }}>{stat.metric}</p>
+                <p className="text-xl md:text-3xl font-bold mb-1" style={{ color: '#C8FF00' }}>{stat.metric}</p>
                 <p className="text-gray-300 text-xs leading-tight mb-2">{stat.description}</p>
               </div>
               <p className="text-gray-500 text-xs">{stat.company}</p>

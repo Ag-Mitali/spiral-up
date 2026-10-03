@@ -11,17 +11,17 @@ const stats = [
 
 export default function WhyDifferent2() {
   return (
-    <section className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-14 md:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* Left — image placeholder */}
+          {/* Left — image placeholder: hidden on mobile */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="flex items-center justify-center rounded-2xl"
+            className="hidden lg:flex items-center justify-center rounded-2xl"
             style={{
               minHeight: '480px',
               backgroundColor: '#0a0a0a',
@@ -69,7 +69,7 @@ export default function WhyDifferent2() {
                   className={`flex flex-col gap-2 ${i > 0 ? 'pl-6 border-l' : ''}`}
                   style={{ borderColor: 'rgba(255,255,255,0.08)' }}
                 >
-                  <span className="text-3xl font-bold" style={{ color: '#C8FF00' }}>{s.value}</span>
+                  <span className="text-2xl md:text-3xl font-bold" style={{ color: '#C8FF00' }}>{s.value}</span>
                   <span className="text-xs leading-snug" style={{ color: '#9ca3af' }}>{s.label}</span>
                 </div>
               ))}

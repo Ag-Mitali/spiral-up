@@ -43,8 +43,8 @@ export default function FAQ() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i)
 
   return (
-    <section className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
 
         {/* Section label */}
         <motion.div

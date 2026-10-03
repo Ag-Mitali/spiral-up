@@ -53,8 +53,8 @@ export default function Testimonials() {
   const total = testimonials.length
 
   return (
-    <section className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-14 md:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
 
         {/* Section label */}
         <motion.div
@@ -70,7 +70,7 @@ export default function Testimonials() {
           <div className="h-px w-12 mt-2 bg-red-500/60" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-[280px_1fr] gap-12 items-start">
+        <div className="grid lg:grid-cols-[260px_1fr] gap-10 items-start">
 
           {/* Left — heading + controls */}
           <motion.div
