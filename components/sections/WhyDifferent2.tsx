@@ -25,7 +25,8 @@ export default function WhyDifferent2() {
             style={{
               minHeight: '480px',
               backgroundColor: '#0a0a0a',
-              border: '1px solid rgba(255,255,255,0.06)',
+              border: '1.5px solid rgba(200,255,0,0.25)',
+              boxShadow: '0 0 24px rgba(200,255,0,0.06)',
             }}
           >
             <div className="flex flex-col items-center gap-3">
@@ -92,7 +93,7 @@ export default function WhyDifferent2() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px"
           style={{ backgroundColor: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', overflow: 'hidden' }}
         >
           {[

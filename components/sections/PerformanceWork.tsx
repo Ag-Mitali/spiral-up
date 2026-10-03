@@ -94,7 +94,11 @@ export default function PerformanceWork() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group relative rounded-xl overflow-hidden"
-              style={{ aspectRatio: '16/9' }}
+              style={{
+                aspectRatio: '16/9',
+                border: '1px solid rgba(200,255,0,0.2)',
+                boxShadow: '0 0 12px rgba(200,255,0,0.06)',
+              }}
             >
               {video.youtubeId ? (
                 <iframe

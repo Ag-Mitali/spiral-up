@@ -137,7 +137,7 @@ export default function Testimonials() {
                   <div
                     key={i}
                     className="rounded-2xl p-6 flex flex-col justify-between gap-6"
-                    style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(255,255,255,0.07)' }}
+                    style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(255,255,255,0.12)' }}
                   >
                     {/* Quote mark */}
                     <div>
