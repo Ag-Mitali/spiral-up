@@ -113,10 +113,10 @@ export default function PerformanceWork() {
                 >
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center"
-                    style={{ border: '1.5px solid rgba(192,57,43,0.4)' }}
+                    style={{ border: '1.5px solid rgba(200,255,0,0.4)' }}
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <polygon points="5,3 19,12 5,21" fill="rgba(192,57,43,0.6)" />
+                      <polygon points="5,3 19,12 5,21" fill="rgba(200,255,0,0.7)" />
                     </svg>
                   </div>
                   <span className="text-xs" style={{ color: '#2d2d2d' }}>{video.label}</span>

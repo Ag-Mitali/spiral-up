@@ -88,7 +88,7 @@ export default function WhatElseWeDo() {
             >
               {/* Card content */}
               <div className="p-5 flex flex-col gap-3 z-10 relative">
-                <span className="text-xs font-semibold text-red-600">{s.number}</span>
+                <span className="text-xs font-semibold" style={{ color: '#C8FF00' }}>{s.number}</span>
                 <h3 className="text-lg font-bold text-white leading-snug">{s.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>{s.desc}</p>
               </div>
@@ -110,10 +110,12 @@ export default function WhatElseWeDo() {
               {/* Arrow button */}
               <div className="px-5 pb-5 z-10 relative">
                 <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200 group-hover:bg-red-600/20"
-                  style={{ border: '1.5px solid rgba(192,57,43,0.5)' }}
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-200"
+                  style={{ border: '1.5px solid rgba(200,255,0,0.4)' }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(200,255,0,0.1)')}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
-                  <ArrowRight size={15} style={{ color: '#c0392b' }} />
+                  <ArrowRight size={15} style={{ color: '#C8FF00' }} />
                 </div>
               </div>
 
@@ -142,9 +144,9 @@ export default function WhatElseWeDo() {
           <div className="flex items-center gap-4">
             <div
               className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: 'rgba(192,57,43,0.12)', border: '1.5px solid rgba(192,57,43,0.4)' }}
+              style={{ backgroundColor: 'rgba(200,255,0,0.08)', border: '1.5px solid rgba(200,255,0,0.35)' }}
             >
-              <BarChart2 size={16} style={{ color: '#c0392b' }} />
+              <BarChart2 size={16} style={{ color: '#C8FF00' }} />
             </div>
             <div>
               <p className="text-sm font-bold text-white">Most clients start with a video project and expand.</p>
@@ -159,9 +161,9 @@ export default function WhatElseWeDo() {
           <div className="hidden md:flex items-center gap-3 flex-shrink-0">
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center"
-              style={{ border: '1.5px solid rgba(192,57,43,0.5)' }}
+              style={{ border: '1.5px solid rgba(200,255,0,0.4)' }}
             >
-              <ArrowRight size={14} style={{ color: '#c0392b' }} />
+              <ArrowRight size={14} style={{ color: '#C8FF00' }} />
             </div>
             <p className="text-xs font-bold tracking-widest uppercase" style={{ color: '#6b7280' }}>
               Same team.<br />Bigger impact.

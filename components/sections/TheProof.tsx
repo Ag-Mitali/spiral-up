@@ -120,13 +120,13 @@ export default function TheProof() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-black border border-red-500/30 rounded-lg p-4 hover:border-red-500/60 transition-all duration-300 relative"
+              className="bg-black border border-[rgba(200,255,0,0.2)] rounded-lg p-4 hover:border-[rgba(200,255,0,0.45)] transition-all duration-300 relative"
             >
               {/* Green accent dot top-right */}
-              <div className="absolute top-2 right-2 w-2 h-2 bg-green-500 rounded-full" />
+              <div className="absolute top-2 right-2 w-2 h-2 rounded-full" style={{ backgroundColor: '#C8FF00' }} />
               
               <div>
-                <p className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.metric}</p>
+                <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: '#C8FF00' }}>{stat.metric}</p>
                 <p className="text-gray-300 text-xs leading-tight mb-2">{stat.description}</p>
               </div>
               <p className="text-gray-500 text-xs">{stat.company}</p>

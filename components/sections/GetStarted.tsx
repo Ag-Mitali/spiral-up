@@ -112,7 +112,7 @@ export default function GetStarted() {
                   <div className="flex items-center gap-6 mb-8">
                     {steps.map((s, i) => (
                       <div key={i} className="flex items-center gap-2">
-                        <span className="text-xs" style={{ color: i <= step ? '#c0392b' : '#4b5563' }}>
+                        <span className="text-xs" style={{ color: i <= step ? '#C8FF00' : '#4b5563' }}>
                           0{i + 1}
                         </span>
                         <span
@@ -122,7 +122,7 @@ export default function GetStarted() {
                           {s}
                         </span>
                         {i === step && (
-                          <div className="h-px w-8" style={{ backgroundColor: '#c0392b' }} />
+                          <div className="h-px w-8" style={{ backgroundColor: '#C8FF00' }} />
                         )}
                       </div>
                     ))}
@@ -155,7 +155,7 @@ export default function GetStarted() {
                               border: '1px solid rgba(255,255,255,0.1)',
                               color: '#f0f0f0',
                             }}
-                            onFocus={e => (e.currentTarget.style.borderColor = '#c0392b')}
+                            onFocus={e => (e.currentTarget.style.borderColor = '#C8FF00')}
                             onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
                           />
                         </div>
@@ -193,7 +193,7 @@ export default function GetStarted() {
                             autoFocus
                             className="w-full rounded-lg pl-10 pr-4 py-3.5 text-sm outline-none transition-all"
                             style={{ backgroundColor: '#161616', border: '1px solid rgba(255,255,255,0.1)', color: '#f0f0f0' }}
-                            onFocus={e => (e.currentTarget.style.borderColor = '#c0392b')}
+                            onFocus={e => (e.currentTarget.style.borderColor = '#C8FF00')}
                             onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
                           />
                         </div>
@@ -207,7 +207,7 @@ export default function GetStarted() {
                             placeholder="WhatsApp number"
                             className="w-full rounded-lg pl-10 pr-4 py-3.5 text-sm outline-none transition-all"
                             style={{ backgroundColor: '#161616', border: '1px solid rgba(255,255,255,0.1)', color: '#f0f0f0' }}
-                            onFocus={e => (e.currentTarget.style.borderColor = '#c0392b')}
+                            onFocus={e => (e.currentTarget.style.borderColor = '#C8FF00')}
                             onBlur={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)')}
                           />
                         </div>
@@ -234,9 +234,9 @@ export default function GetStarted() {
                 >
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ border: '2px solid #c0392b', boxShadow: '0 0 24px rgba(192,57,43,0.2)' }}
+                    style={{ border: '2px solid #C8FF00', boxShadow: '0 0 24px rgba(200,255,0,0.2)' }}
                   >
-                    <CheckCircle size={32} style={{ color: '#c0392b' }} />
+                    <CheckCircle size={32} style={{ color: '#C8FF00' }} />
                   </div>
                   <h3 className="text-xl font-bold text-white">We&apos;ve got it!</h3>
                   <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#9ca3af' }}>

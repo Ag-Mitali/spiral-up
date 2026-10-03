@@ -42,7 +42,7 @@ const testimonials = [
 const Avatar = ({ name }: { name: string }) => (
   <div
     className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold text-white"
-    style={{ backgroundColor: '#1a1a1a', border: '1.5px solid rgba(192,57,43,0.3)' }}
+    style={{ backgroundColor: '#1a1a1a', border: '1.5px solid rgba(200,255,0,0.25)' }}
   >
     {name.charAt(0)}
   </div>
@@ -101,18 +101,19 @@ export default function Testimonials() {
                 onClick={() => setPage((p) => Math.min(total - 1, p + 1))}
                 disabled={page === total - 1}
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 disabled:opacity-30"
-                style={{ border: '1.5px solid #c0392b', backgroundColor: 'rgba(192,57,43,0.1)' }}
+                style={{ border: '1.5px solid #C8FF00', backgroundColor: 'rgba(200,255,0,0.08)' }}
               >
-                <ArrowRight size={16} style={{ color: '#c0392b' }} />
+                <ArrowRight size={16} style={{ color: '#C8FF00' }} />
               </button>
             </div>
 
             {/* Page indicator */}
             <div className="flex items-center gap-3">
-              <span className="text-sm font-bold text-red-600">0{page + 1}</span>
+              <span className="text-sm font-bold" style={{ color: '#C8FF00' }}>0{page + 1}</span>
               <div className="flex-1 h-px max-w-[80px]" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
                 <motion.div
-                  className="h-full bg-red-600"
+                  className="h-full"
+                  style={{ backgroundColor: '#C8FF00' }}
                   animate={{ width: `${((page + 1) / total) * 100}%` }}
                   transition={{ duration: 0.4 }}
                 />
@@ -140,7 +141,7 @@ export default function Testimonials() {
                   >
                     {/* Quote mark */}
                     <div>
-                      <span className="text-4xl font-black leading-none" style={{ color: '#c0392b' }}>&ldquo;</span>
+                      <span className="text-4xl font-black leading-none" style={{ color: '#C8FF00' }}>&ldquo;</span>
                       <p className="text-base text-white leading-relaxed mt-2">{t.quote}</p>
                     </div>
 

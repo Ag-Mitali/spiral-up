@@ -1,10 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Link2, Calendar } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Hero() {
+  const [link, setLink] = useState('')
 
   return (
     <section className="min-h-screen bg-black flex items-center justify-center overflow-hidden pt-20">
@@ -59,45 +61,69 @@ export default function Hero() {
               }}
             />
 
-            {/* CTA Buttons */}
+            {/* Inline CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col gap-4 max-w-lg"
             >
+              {/* Label */}
+              <p className="text-sm font-semibold text-white">
+                Send us your link. We&apos;ll tell you what videos your brand actually needs.
+              </p>
+
+              {/* Input + Continue row */}
+              <div
+                className="flex items-center gap-0 rounded-full overflow-hidden"
+                style={{ border: '1px solid rgba(255,255,255,0.15)' }}
+              >
+                <div className="flex items-center gap-3 flex-1 px-5">
+                  <Link2 size={16} style={{ color: '#6b7280', flexShrink: 0 }} />
+                  <input
+                    type="url"
+                    value={link}
+                    onChange={e => setLink(e.target.value)}
+                    placeholder="Instagram handle or product link"
+                    className="flex-1 bg-transparent py-4 text-sm text-white placeholder-gray-400 outline-none"
+                  />
+                </div>
+                {/* Divider */}
+                <div className="w-px h-6 bg-white/10 flex-shrink-0" />
+                {/* Continue button */}
+                <button
+                  className="flex items-center gap-2 px-6 py-4 font-semibold text-sm text-white rounded-r-full transition-all flex-shrink-0"
+                  style={{ backgroundColor: '#e53e3e' }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
+                >
+                  Continue
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+
+              {/* OR divider */}
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
+                <span className="text-xs text-gray-500">or</span>
+                <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
+              </div>
+
+              {/* Book a call */}
               <Link href="/book-a-call?from=/">
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-10 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group text-lg w-full"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full flex items-center justify-center gap-3 py-4 rounded-full font-semibold text-sm text-white transition-all"
+                  style={{ border: '1.5px solid #e53e3e' }}
+                  onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'rgba(229,62,62,0.08)')}
+                  onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
                 >
-                  Book a call
-                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                  <Calendar size={16} style={{ color: '#9ca3af' }} />
+                  Prefer to talk? Book a call
+                  <ArrowRight size={16} style={{ color: '#9ca3af' }} />
                 </motion.button>
               </Link>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-3 group text-lg"
-                style={{ 
-                  border: '2px solid #C8FF00', 
-                  color: '#C8FF00',
-                  boxShadow: '0 0 12px rgba(200,255,0,0.4), 0 0 24px rgba(200,255,0,0.15)',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = 'rgba(200,255,0,0.08)'
-                  e.currentTarget.style.boxShadow = '0 0 20px rgba(200,255,0,0.6), 0 0 40px rgba(200,255,0,0.25)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = 'transparent'
-                  e.currentTarget.style.boxShadow = '0 0 12px rgba(200,255,0,0.4), 0 0 24px rgba(200,255,0,0.15)'
-                }}
-              >
-                See the work
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
             </motion.div>
           </motion.div>
 

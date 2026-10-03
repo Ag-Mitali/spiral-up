@@ -91,30 +91,30 @@ export default function FAQ() {
                 key={i}
                 className="rounded-xl overflow-hidden transition-colors duration-200"
                 style={{
-                  border: `1px solid ${openIndex === i ? 'rgba(192,57,43,0.35)' : 'rgba(255,255,255,0.1)'}`,
-                  backgroundColor: openIndex === i ? 'rgba(192,57,43,0.04)' : 'transparent',
+                  border: `1px solid ${openIndex === i ? 'rgba(200,255,0,0.3)' : 'rgba(255,255,255,0.1)'}`,
+                  backgroundColor: openIndex === i ? 'rgba(200,255,0,0.03)' : 'transparent',
                 }}
               >
                 <button
                   onClick={() => toggle(i)}
                   className="w-full flex items-start gap-6 px-5 py-4 text-left group"
                 >
-                  <span className="text-sm font-semibold w-6 flex-shrink-0 mt-0.5" style={{ color: '#c0392b' }}>
+                  <span className="text-sm font-semibold w-6 flex-shrink-0 mt-0.5" style={{ color: '#C8FF00' }}>
                     {faq.number}
                   </span>
-                  <span className="flex-1 text-base font-semibold text-white group-hover:text-red-400 transition-colors duration-200">
+                  <span className="flex-1 text-base font-semibold text-white group-hover:text-[#C8FF00] transition-colors duration-200">
                     {faq.question}
                   </span>
                   <div
                     className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-200"
                     style={{
                       border: '1.5px solid rgba(255,255,255,0.12)',
-                      backgroundColor: openIndex === i ? 'rgba(192,57,43,0.12)' : 'transparent',
-                      borderColor: openIndex === i ? 'rgba(192,57,43,0.4)' : 'rgba(255,255,255,0.12)',
+                      backgroundColor: openIndex === i ? 'rgba(200,255,0,0.1)' : 'transparent',
+                      borderColor: openIndex === i ? 'rgba(200,255,0,0.4)' : 'rgba(255,255,255,0.12)',
                     }}
                   >
                     {openIndex === i
-                      ? <Minus size={14} style={{ color: '#c0392b' }} />
+                      ? <Minus size={14} style={{ color: '#C8FF00' }} />
                       : <Plus size={14} style={{ color: '#9ca3af' }} />
                     }
                   </div>

@@ -4,6 +4,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Search, Lightbulb, Send, Zap } from 'lucide-react'
 
+const ACCENT = '#C8FF00'
+
 const steps = [
   {
     number: '01',
@@ -58,7 +60,7 @@ export default function HowItWorksNew() {
 
         {/* Steps */}
         <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch mb-8">
-        {steps.map((step, i) => {
+          {steps.map((step, i) => {
             const Icon = step.icon
             return (
               <React.Fragment key={step.number}>
@@ -67,21 +69,27 @@ export default function HowItWorksNew() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}
-                  className="rounded-xl p-6 flex flex-col justify-between"
+                  className="rounded-xl p-6 flex flex-col justify-between group hover:border-white/20 transition-colors duration-200"
                   style={{
                     backgroundColor: '#0f0f0f',
                     border: '1px solid rgba(255,255,255,0.08)',
                   }}
                 >
-                  {/* Top row: number + icon */}
+                  {/* Top row: number circle + icon */}
                   <div className="flex items-start justify-between mb-6">
+                    {/* Number — accent green circle */}
                     <div
                       className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ border: '1.5px solid #c0392b' }}
+                      style={{
+                        border: `1.5px solid ${ACCENT}`,
+                        boxShadow: `0 0 8px rgba(200,255,0,0.2)`,
+                      }}
                     >
-                      <span className="text-xs font-bold text-red-600">{step.number}</span>
+                      <span className="text-xs font-bold" style={{ color: ACCENT }}>{step.number}</span>
                     </div>
-                    <Icon size={20} className="text-red-600/60" strokeWidth={1.5} />
+
+                    {/* Icon — muted, no glow */}
+                    <Icon size={18} strokeWidth={1.5} style={{ color: 'rgba(255,255,255,0.25)' }} />
                   </div>
 
                   {/* Text */}
@@ -89,13 +97,13 @@ export default function HowItWorksNew() {
                     <h3 className="text-lg font-bold text-white leading-snug mb-3">
                       {step.heading}
                     </h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed">
                       {step.body}
                     </p>
                   </div>
                 </motion.div>
 
-                {/* Arrow between steps */}
+                {/* Arrow between steps — accent green */}
                 {i < steps.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -104,7 +112,7 @@ export default function HowItWorksNew() {
                     transition={{ duration: 0.4, delay: 0.25 + i * 0.12 }}
                     className="hidden md:flex items-center justify-center px-1"
                   >
-                    <ArrowRight size={20} className="text-red-600/70" />
+                    <ArrowRight size={18} strokeWidth={1.5} style={{ color: ACCENT }} />
                   </motion.div>
                 )}
               </React.Fragment>
@@ -124,18 +132,23 @@ export default function HowItWorksNew() {
             border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          <Zap size={16} className="text-red-600 flex-shrink-0" />
-          <div
-            className="w-px h-5 flex-shrink-0"
-            style={{ backgroundColor: 'rgba(192,57,43,0.4)' }}
+          {/* Zap icon — accent green with glow for emphasis */}
+          <Zap
+            size={16}
+            strokeWidth={2}
+            style={{
+              color: ACCENT,
+              filter: `drop-shadow(0 0 6px rgba(200,255,0,0.6))`,
+              flexShrink: 0,
+            }}
           />
+          <div className="w-px h-5 flex-shrink-0" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }} />
           <p className="text-sm text-gray-400">
             Current turnaround: <span className="font-bold text-white">first cut in [X] days.</span>
           </p>
-          {/* Trailing line */}
           <div
             className="flex-1 h-px hidden sm:block"
-            style={{ background: 'linear-gradient(90deg, rgba(192,57,43,0.4) 0%, transparent 100%)' }}
+            style={{ background: `linear-gradient(90deg, rgba(200,255,0,0.25) 0%, transparent 100%)` }}
           />
         </motion.div>
 

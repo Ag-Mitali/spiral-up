@@ -31,11 +31,11 @@ export default function VideoPlaceholder() {
             <div
               className="w-16 h-16 rounded-full flex items-center justify-center"
               style={{
-                backgroundColor: 'rgba(192,57,43,0.12)',
-                border: '1.5px solid rgba(192,57,43,0.4)',
+                backgroundColor: 'rgba(200,255,0,0.08)',
+                border: '1.5px solid rgba(200,255,0,0.4)',
               }}
             >
-              <Play size={24} style={{ color: '#c0392b' }} fill="rgba(192,57,43,0.6)" />
+              <Play size={24} style={{ color: '#C8FF00' }} fill="rgba(200,255,0,0.5)" />
             </div>
             <p className="text-sm" style={{ color: '#2d2d2d' }}>Video coming soon</p>
           </div>

@@ -60,9 +60,9 @@ export default function WhoWeWorkWith() {
                 >
                   <span
                     className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: 'rgba(192,57,43,0.15)', border: '1px solid rgba(192,57,43,0.4)' }}
+                    style={{ backgroundColor: 'rgba(200,255,0,0.1)', border: '1px solid rgba(200,255,0,0.4)' }}
                   >
-                    <Check size={13} style={{ color: '#c0392b' }} strokeWidth={2.5} />
+                    <Check size={13} style={{ color: '#C8FF00' }} strokeWidth={2.5} />
                   </span>
                   <p className="text-base leading-relaxed" style={{ color: '#d1d5db' }}>
                     {item}
@@ -118,7 +118,7 @@ export default function WhoWeWorkWith() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-20 h-px origin-left"
-          style={{ background: 'linear-gradient(90deg, rgba(192,57,43,0.3) 0%, rgba(192,57,43,0.05) 60%, transparent 100%)' }}
+          style={{ background: 'linear-gradient(90deg, rgba(200,255,0,0.25) 0%, rgba(200,255,0,0.05) 60%, transparent 100%)' }}
         />
 
       </div>

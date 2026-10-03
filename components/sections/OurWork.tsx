@@ -1,51 +1,66 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+
+const ACCENT = '#C8FF00'
+
+const videos = [
+  {
+    id: 1,
+    brand: 'Fracture with Performance',
+    category: 'Medical',
+    desc: 'Builds trust through clinical authority',
+    format: 'Brand reel · 30s',
+    videoSrc: null, // replace with actual video URL when ready
+  },
+  {
+    id: 2,
+    brand: 'Devinoire',
+    category: 'D2C',
+    desc: 'Makes everyday moments crave-worthy',
+    format: 'Product reel · 24s',
+    videoSrc: null,
+  },
+  {
+    id: 3,
+    brand: 'ORACURA',
+    category: 'FMCG',
+    desc: 'Showcases product texture and freshness',
+    format: 'Product reel · 22s',
+    videoSrc: null,
+  },
+  {
+    id: 4,
+    brand: 'ASUS — Upscaling',
+    category: 'Tech',
+    desc: 'Showcases durability in real-world use',
+    format: 'Brand film · 30s',
+    videoSrc: null,
+  },
+  {
+    id: 5,
+    brand: 'Shine Divine',
+    category: 'Jewellery',
+    desc: 'Brings the collection to life',
+    format: 'Product reel · 20s',
+    videoSrc: null,
+  },
+  {
+    id: 6,
+    brand: 'Bastar Farms',
+    category: 'FMCG',
+    desc: 'Highlights real ingredients',
+    format: 'Product reel · 18s',
+    videoSrc: null,
+  },
+]
 
 export default function OurWork() {
-  const videos = [
-    {
-      id: 1,
-      title: 'Fracture with Performance',
-      category: 'Medical',
-      youtubeId: 'iUFzvFPAQIk',
-    },
-    {
-      id: 2,
-      title: 'Devinoire',
-      category: 'Luxury',
-      youtubeId: 'dRcVOTxf-G8',
-    },
-    {
-      id: 3,
-      title: 'ORACURA',
-      category: 'FMCG',
-      youtubeId: '5FSoyffwMmQ',
-    },
-    {
-      id: 4,
-      title: 'ASUS — Upscaling',
-      category: 'Tech',
-      youtubeId: '8tSlLrGAbHM',
-    },
-    {
-      id: 5,
-      title: 'Shine Divine',
-      category: 'Jewellery',
-      youtubeId: 'N27a3VvfVdU',
-    },
-    {
-      id: 6,
-      title: 'Bastar Farms',
-      category: 'FMCG',
-      youtubeId: 'Yqd_4YFfVtA',
-    },
-  ]
-
   return (
     <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -54,100 +69,118 @@ export default function OurWork() {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          {/* Section Number */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="mb-4"
-          >
-            <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">01 · OUR WORK</span>
-            <div className="h-px w-12 mt-2 bg-red-500/60" />
-          </motion.div>
-
-          {/* Headline and Description */}
-          <div className="grid lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="lg:col-span-2"
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                If these were on your feed, would you stop scrolling?
-              </h2>
-            </motion.div>
-
-            {/* Categories */}
-          </div>
+          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">01 · OUR WORK</span>
+          <div className="h-px w-12 mt-2 bg-red-500/60" />
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mt-6">
+            If these were on your feed, would you stop scrolling?
+          </h2>
         </motion.div>
 
-        {/* Video Grid - Horizontal Scroll */}
+        {/* Video cards — horizontal scroll */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex gap-4 overflow-x-auto pb-4 mb-12 scroll-smooth video-scroll"
-          style={{
-            scrollBehavior: 'smooth',
-            scrollbarWidth: 'none',
-          }}
+          className="flex gap-4 overflow-x-auto pb-4 mb-12"
+          style={{ scrollbarWidth: 'none', paddingTop: '8px' }}
         >
           {videos.map((video, index) => (
             <motion.div
               key={video.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              className="relative group flex-shrink-0"
-              style={{
-                width: '200px',
-                aspectRatio: '9/16',
-              }}
+              transition={{ delay: index * 0.06, duration: 0.5 }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="relative flex-shrink-0 group cursor-pointer"
+              style={{ width: '200px', aspectRatio: '9/16' }}
             >
-              {/* YouTube Embed Container */}
-              <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-black rounded-lg overflow-hidden border border-white/10 hover:border-red-500/50 transition-all">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&controls=0&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 pointer-events-none"
-                />
-
-                {/* Transparent overlay to block YouTube UI chrome (AI tags, arrow buttons) */}
-                <div className="absolute inset-0 z-10" />
-
-                {/* Video Info - Positioned at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/60 to-transparent p-3 z-20">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 + 0.2 }}
+              {/* Card wrapper — lime green border glow on hover */}
+              <div
+                className="relative w-full h-full rounded-xl transition-all duration-300"
+                style={{
+                  backgroundColor: '#0f0f0f',
+                  border: '1.5px solid rgba(255,255,255,0.08)',
+                  overflow: 'hidden',
+                  transition: 'border-color 0.3s, box-shadow 0.3s',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = '#C8FF00'
+                  e.currentTarget.style.boxShadow = '0 0 0 1px #C8FF00, 0 0 20px rgba(200,255,0,0.3)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                {/* Video / placeholder */}
+                {video.videoSrc ? (
+                  <video
+                    src={video.videoSrc}
+                    autoPlay muted loop playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(160deg, #1c1c1c 0%, #080808 100%)' }}
                   >
-                    <p className="text-xs text-red-400 font-semibold">
-                      {video.category}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-4xl font-black tracking-tighter select-none" style={{ color: 'rgba(255,255,255,0.03)' }}>
+                        {video.category.toUpperCase()}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Info box — solid dark panel, slides up on hover */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 z-10 transition-all duration-300"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 100%)' }}
+                >
+                  <div
+                    className="mx-2 mb-2 rounded-lg p-3 transition-all duration-300"
+                    style={{
+                      backgroundColor: 'rgba(10,10,10,0.85)',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    {/* Top row: Brand · Category + arrow */}
+                    <div className="flex items-start justify-between gap-2 mb-1.5">
+                      <div>
+                        <span className="text-xs font-bold text-white">{video.brand}</span>
+                        <span className="text-xs mx-1" style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
+                        <span className="text-xs font-semibold" style={{ color: ACCENT }}>{video.category}</span>
+                      </div>
+                      {/* Arrow in circle */}
+                      <div
+                        className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        style={{ backgroundColor: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)' }}
+                      >
+                        <ArrowUpRight size={11} color="white" strokeWidth={2.5} />
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-xs leading-snug mb-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      {video.desc}
                     </p>
-                    <h3 className="text-sm font-bold text-white line-clamp-2">
-                      {video.title}
-                    </h3>
-                  </motion.div>
+
+                    {/* Format */}
+                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                      {video.format}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -160,23 +193,24 @@ export default function OurWork() {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-3 group text-base transition-all"
             style={{
-              border: '2px solid #c1ff72',
-              color: '#c1ff72',
-              boxShadow: '0 0 12px rgba(193,255,114,0.35), 0 0 24px rgba(193,255,114,0.15)',
+              border: `2px solid ${ACCENT}`,
+              color: ACCENT,
+              boxShadow: '0 0 12px rgba(200,255,0,0.3), 0 0 24px rgba(200,255,0,0.12)',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.backgroundColor = 'rgba(193,255,114,0.08)'
-              e.currentTarget.style.boxShadow = '0 0 20px rgba(193,255,114,0.55), 0 0 40px rgba(193,255,114,0.2)'
+              e.currentTarget.style.backgroundColor = 'rgba(200,255,0,0.08)'
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(200,255,0,0.5), 0 0 40px rgba(200,255,0,0.2)'
             }}
             onMouseLeave={e => {
               e.currentTarget.style.backgroundColor = 'transparent'
-              e.currentTarget.style.boxShadow = '0 0 12px rgba(193,255,114,0.35), 0 0 24px rgba(193,255,114,0.15)'
+              e.currentTarget.style.boxShadow = '0 0 12px rgba(200,255,0,0.3), 0 0 24px rgba(200,255,0,0.12)'
             }}
           >
             See what we can make for you
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </motion.div>
+
       </div>
     </section>
   )
