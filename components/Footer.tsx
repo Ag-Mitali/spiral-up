@@ -1,147 +1,162 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Calendar, MessageCircle, Mail, Instagram, Linkedin } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Instagram, Linkedin, Mail, MessageCircle, Calendar } from 'lucide-react'
+
+const explore = [
+  { label: 'Work', href: '#portfolio' },
+  { label: 'How It Works', href: '#services' },
+  { label: 'Results', href: '#results' },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#what-we-do' },
+  { label: 'Contact', href: '#contact' },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-red-500/20">
+    <footer className="bg-black border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {/* Left Column - Brand */}
+
+        {/* Main grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+
+          {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            {/* Spiral Logo */}
-            <div className="mb-6 flex items-center gap-3">
-              <div className="relative w-12 h-12">
-                {/* Red spiral circles */}
-                <svg viewBox="0 0 50 50" className="w-full h-full">
-                  <circle cx="25" cy="25" r="20" fill="none" stroke="#ff0000" strokeWidth="1.5" opacity="0.8" />
-                  <circle cx="25" cy="25" r="16" fill="none" stroke="#ff0000" strokeWidth="1.5" opacity="0.6" />
-                  <circle cx="25" cy="25" r="12" fill="none" stroke="#ff0000" strokeWidth="1.5" opacity="0.4" />
-                  <circle cx="25" cy="25" r="8" fill="none" stroke="#ff0000" strokeWidth="1.5" opacity="0.2" />
-                </svg>
-                {/* Glow effect */}
-                <div className="absolute inset-0 blur-md bg-red-500/20 rounded-full" />
-              </div>
-              <div className="flex flex-col">
-                <h3 className="text-lg font-bold text-white leading-none">Spiral Up</h3>
-                <p className="text-xs text-gray-400">Digital</p>
-              </div>
-            </div>
-
-            {/* Description */}
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              High-production reels and ads for brands that need sharper creative.
-            </p>
-
-            {/* Social Links */}
-            <div className="flex gap-4">
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                className="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center text-gray-400 hover:border-red-500 hover:text-red-500 transition-colors"
-              >
-                <Instagram size={18} />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                className="w-10 h-10 rounded-full border-2 border-gray-600 flex items-center justify-center text-gray-400 hover:border-red-500 hover:text-red-500 transition-colors"
-              >
-                <Linkedin size={18} />
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Middle Column - Explore */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            transition={{ duration: 0.5 }}
+            className="col-span-2 md:col-span-1 flex flex-col gap-4"
           >
-            <h4 className="text-gray-400 text-sm font-semibold mb-8 tracking-wide">Explore</h4>
-            <ul className="space-y-4">
-              {[
-                { label: 'Work', href: '#' },
-                { label: 'How It Works', href: '#' },
-                { label: 'Pricing', href: '#' },
-                { label: 'Contact', href: '#' },
-              ].map((link, index) => (
-                <li key={index}>
-                  <a href={link.href} className="text-white text-base hover:text-red-500 transition-colors">
-                    {link.label}
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <div className="w-9 h-9 relative flex items-center justify-center flex-shrink-0">
+                <svg width="36" height="36" viewBox="0 0 40 40" className="text-red-500" fill="none">
+                  <path d="M20 5 Q 30 5, 30 15 Q 30 25, 20 25 Q 10 25, 10 15 Q 10 8, 17 8 Q 23 8, 23 14 Q 23 20, 17 20"
+                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
+                  <circle cx="17" cy="20" r="2" fill="currentColor" />
+                </svg>
+              </div>
+              <div className="flex flex-col leading-tight">
+                <span className="text-sm font-bold text-white">Spiral Up</span>
+                <span className="text-xs" style={{ color: '#6b7280' }}>Digital</span>
+              </div>
+            </div>
+
+            <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>
+              Cinematic reels, ads and brand films, informed by experience growing businesses.
+            </p>
+          </motion.div>
+
+          {/* Explore */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="flex flex-col gap-4"
+          >
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4b5563' }}>Explore</p>
+            <ul className="flex flex-col gap-2.5">
+              {explore.map(item => (
+                <li key={item.label}>
+                  <a href={item.href} className="text-sm transition-colors duration-200" style={{ color: '#9ca3af' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                    onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
           </motion.div>
 
-          {/* Right Column - Get in Touch */}
+          {/* Get in touch */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className="flex flex-col gap-4"
           >
-            <h4 className="text-gray-400 text-sm font-semibold mb-8 tracking-wide">Get in touch</h4>
-            <div className="space-y-4">
-              {/* Book a call */}
-              <motion.a
-                href="/book-a-call?from=#footer"
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group cursor-pointer"
-              >
-                <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/10 transition-colors">
-                  <Calendar size={18} className="text-red-500" />
-                </div>
-                <span className="text-white">Book a call</span>
-                <ArrowRight size={16} className="text-red-500 ml-auto group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              {/* WhatsApp us */}
-              <motion.a
-                href="#"
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/10 transition-colors">
-                  <MessageCircle size={18} className="text-red-500" />
-                </div>
-                <span className="text-white">WhatsApp us</span>
-                <ArrowRight size={16} className="text-red-500 ml-auto group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-
-              {/* Email us */}
-              <motion.a
-                href="#"
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 group"
-              >
-                <div className="w-10 h-10 rounded-full border-2 border-red-500 flex items-center justify-center flex-shrink-0 group-hover:bg-red-500/10 transition-colors">
-                  <Mail size={18} className="text-red-500" />
-                </div>
-                <span className="text-white">Email us</span>
-                <ArrowRight size={16} className="text-red-500 ml-auto group-hover:translate-x-1 transition-transform" />
-              </motion.a>
-            </div>
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4b5563' }}>Get in touch</p>
+            <ul className="flex flex-col gap-3">
+              <li>
+                <Link href="/book-a-call" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                  <Calendar size={14} />
+                  Book a call
+                  <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                </Link>
+              </li>
+              <li>
+                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                  <MessageCircle size={14} />
+                  WhatsApp us
+                  <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                </a>
+              </li>
+              <li>
+                <a href="mailto:hello@spiralupdigital.com"
+                  className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                  <Mail size={14} />
+                  Email us
+                  <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                </a>
+              </li>
+            </ul>
           </motion.div>
+
+          {/* Social */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.16 }}
+            className="flex flex-col gap-4"
+          >
+            <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4b5563' }}>Social</p>
+            <ul className="flex flex-col gap-3">
+              <li>
+                <a href="#" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                  <Instagram size={14} />
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
+                  <Linkedin size={14} />
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+
         </div>
 
-        {/* Bottom Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="border-t border-gray-800 mt-12 pt-8 text-gray-500 text-sm"
+        {/* Bottom bar */}
+        <div
+          className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
         >
-          <p>© Spiral Up Digital</p>
-        </motion.div>
+          <p className="text-xs" style={{ color: '#374151' }}>© 2026 Spiral Up Digital</p>
+          <a href="#" className="text-xs transition-colors duration-200" style={{ color: '#374151' }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#6b7280')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#374151')}>
+            Privacy Policy
+          </a>
+        </div>
+
       </div>
     </footer>
   )

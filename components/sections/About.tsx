@@ -2,242 +2,113 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function About() {
-  // Professional Neon SVG Icons
-  
-  const AdvertisingIcon = () => (
-    <svg width="200" height="200" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="neonGlow1">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <path d="M30 8L48 16V28C48 40 30 50 30 50C30 50 12 40 12 28V16L30 8Z" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow1)" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="30" cy="28" r="4" fill="#ff0000"/>
-    </svg>
-  )
-
-  const EcommerceIcon = () => (
-    <svg width="200" height="200" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="neonGlow2">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <rect x="14" y="16" width="32" height="28" rx="2" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow2)" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M18 16V12C18 10.9 18.9 10 20 10H40C41.1 10 42 10.9 42 12V16" stroke="#ff0000" strokeWidth="2" filter="url(#neonGlow2)" strokeLinecap="round" strokeLinejoin="round"/>
-      <line x1="22" y1="44" x2="22" y2="50" stroke="#ff0000" strokeWidth="2" filter="url(#neonGlow2)" strokeLinecap="round"/>
-      <line x1="38" y1="44" x2="38" y2="50" stroke="#ff0000" strokeWidth="2" filter="url(#neonGlow2)" strokeLinecap="round"/>
-    </svg>
-  )
-
-  const PsychologyIcon = () => (
-    <svg width="200" height="200" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="neonGlow3">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      <circle cx="30" cy="20" r="8" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow3)"/>
-      <path d="M20 30C18 32 16 36 16 40C16 46 22 50 30 50C38 50 44 46 44 40C44 36 42 32 40 30" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow3)" strokeLinecap="round" strokeLinejoin="round"/>
-      <line x1="26" y1="26" x2="22" y2="30" stroke="#ff0000" strokeWidth="2" filter="url(#neonGlow3)" strokeLinecap="round"/>
-      <line x1="34" y1="26" x2="38" y2="30" stroke="#ff0000" strokeWidth="2" filter="url(#neonGlow3)" strokeLinecap="round"/>
-    </svg>
-  )
-
-  const SocialIcon = () => (
-    <svg width="200" height="200" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="neonGlow4">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-      {/* Message Box */}
-      <path d="M12 14H48C49.1 14 50 14.9 50 16V38C50 39.1 49.1 40 48 40H16L10 46V16C10 14.9 10.9 14 12 14Z" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow4)" strokeLinecap="round" strokeLinejoin="round"/>
-      {/* Heart Inside */}
-      <path d="M30 22C30 22 26 20 24 22C22.5 23 22 25 24 27L30 33L36 27C38 25 37.5 23 36 22C34 20 30 22 30 22Z" stroke="#ff0000" strokeWidth="2" fill="none" filter="url(#neonGlow4)" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-
-  const expertise = [
-    {
-      icon: AdvertisingIcon,
-      title: 'Advertising',
-      description: 'Scroll-stopping ads that sell.',
-    },
-    {
-      icon: EcommerceIcon,
-      title: 'Ecommerce',
-      description: 'Funnels and offers that convert.',
-    },
-    {
-      icon: PsychologyIcon,
-      title: 'Psychology',
-      description: 'Behavior-first creative strategy.',
-    },
-    {
-      icon: SocialIcon,
-      title: 'Social',
-      description: 'Content that builds and scales.',
-    },
-  ]
-
   return (
-    <section className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section className="py-14 md:py-24 bg-black">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+
+        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="mb-10"
         >
-          {/* Interactive Attention Message */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mb-8 flex items-center justify-center gap-2 group cursor-pointer"
-          >
-            {/* Animated Icon - Pulsing */}
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.3, 1],
-              }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
-              className="w-4 h-4 bg-red-500 rounded-sm flex items-center justify-center flex-shrink-0"
-            >
-              <span className="text-white text-xs font-bold">!</span>
-            </motion.div>
-
-            {/* Pulsing Text */}
-            <motion.span 
-              className="text-red-500 font-semibold text-sm"
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2.5, repeat: Infinity, repeatType: "loop" }}
-            >
-              Your reel has a few seconds to earn attention. We treat those seconds seriously.
-            </motion.span>
-
-            {/* Gradient Line */}
-            <div
-              className="h-0.5 w-20 ml-4"
-              style={{
-                background: 'linear-gradient(90deg, #ff0000 0%, transparent 100%)',
-                boxShadow: '0 0 8px rgba(255, 0, 0, 0.6)',
-              }}
-            />
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8"
-          >
-            Who are we?
-          </motion.h2>
-
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto space-y-1 mb-8"
-          >
-            <p className="text-lg text-gray-300 max-w-6xl mx-auto">
-              We are advertising, ecommerce, psychology, and social experts leading a team of creative professionals.
-            </p>
-            <p className="text-lg text-gray-300 max-w-6xl mx-auto">
-              We study what makes people stop, watch, feel, click, and buy — then build content around that.
-            </p>
-          </motion.div>
+          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">
+            Meet the Founder
+          </span>
+          <div className="h-px w-12 mt-2 bg-red-500/60" />
         </motion.div>
 
-        {/* Expertise Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-        >
-          {expertise.map((item, index) => {
-            const Icon = item.icon
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+        <div className="grid lg:grid-cols-[1fr_1.8fr] gap-12 lg:gap-20 items-start">
+
+          {/* Left — sticky identity */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="lg:sticky lg:top-28 flex flex-col gap-6"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+              A small agency.<br />Personally led.
+            </h2>
+
+            {/* Name + title */}
+            <div className="flex flex-col gap-1">
+              <p className="text-base font-semibold text-white">Abhishek Edachali</p>
+              <p className="text-sm" style={{ color: '#6b7280' }}>Founder, Spiral Up Digital</p>
+            </div>
+
+            {/* 12+ years badge */}
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full w-fit"
+              style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(200,255,0,0.2)' }}
+            >
+              <span className="text-sm font-bold" style={{ color: '#C8FF00' }}>12+</span>
+              <span className="text-xs" style={{ color: '#6b7280' }}>years in the industry</span>
+            </div>
+
+            {/* CTA */}
+            <Link href="/book-a-call">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white group transition-colors duration-200 w-fit"
+                style={{ backgroundColor: '#e53e3e' }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
+              >
+                Book a call
+                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* Right — body copy */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="flex flex-col gap-5"
+          >
+            {[
+              { text: `I'm Abhishek Edachali, founder of Spiral Up Digital. I've spent 12+ years helping businesses grow, following the digital landscape as it evolved and learning at every step. My curiosity spans art and science: how things look, how people think, and what makes them act.`, highlight: false },
+              { text: `I've watched great businesses get overlooked because their presentation didn't communicate their value quickly enough. That's an opportunity I want to help more founders capture.`, highlight: false },
+              { text: `We're a small agency, and I'm personally involved in every client's business, every story, every brief and every final output. As a founder myself, I understand how much you've invested in building your brand, and the responsibility that comes with growing it.`, highlight: false },
+              { text: `If you're looking for a yes man, we probably won't be the right fit.`, highlight: true },
+              { text: `You know your business deeply. We bring another perspective. We work from first principles: questioning assumptions, understanding your audience and finding what actually serves the business. We identify what's already working, improve or scale it, and explore new directions worth testing.`, highlight: false },
+              { text: `I'm straightforward about what I believe will help, and I bring the same scrutiny to my own ideas. I enjoy unconventional thinking, but I'm my own toughest critic. That's part of the care I bring to every brand.`, highlight: false },
+              { text: `An additional brain for your business, and the team to put the thinking into action.`, highlight: false },
+            ].map((para, i) => (
+              <motion.p
+                key={i}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -5 }}
-                className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] border border-red-500/30 rounded-xl p-8 hover:border-red-500/60 transition-all duration-300 text-center overflow-hidden"
-                style={{
-                  borderTop: '2px solid rgba(255, 0, 0, 0.6)',
-                }}
+                transition={{ duration: 0.4, delay: 0.1 + i * 0.04 }}
+                className={`leading-relaxed ${para.highlight ? 'text-base md:text-lg font-bold text-white' : 'text-sm md:text-base'}`}
+                style={{ color: para.highlight ? '#ffffff' : '#9ca3af' }}
               >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-red-500/0 to-red-500/0 group-hover:from-red-500/5 group-hover:to-red-500/2 rounded-xl transition-all duration-300" />
+                {para.text}
+              </motion.p>
+            ))}
 
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                    <Icon />
-                  </div>
+            {/* Divider */}
+            <div className="h-px w-full mt-2" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
 
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-400 text-sm">
-                    {item.description}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          })}
-        </motion.div>
+            {/* PS note */}
+            <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
+              <span className="font-semibold" style={{ color: '#6b7280' }}>P.S. </span>
+              I've kept this long on purpose to test a few assumptions of my own. Many people won't read this far. If you have, please know that any call you book is 100% no obligation. I'm happy to think about your brand and share ideas with you, even if we don't end up working together.
+            </p>
+          </motion.div>
 
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="flex justify-center"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group text-base"
-          >
-            Talk to us
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

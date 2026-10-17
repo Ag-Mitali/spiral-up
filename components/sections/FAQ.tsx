@@ -7,33 +7,23 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     number: '01',
-    question: 'What does this cost?',
-    answer: 'Most projects run ₹60,000–₹1,00,000 depending on volume. Brand films are quoted separately.',
+    question: "What if I don't like the first cut?",
+    answer: "We agree on the creative direction before production, then use your feedback to refine the first cut. The scope and revision process are agreed before we begin.",
   },
   {
     number: '02',
-    question: "What if I don't like the first cut?",
-    answer: 'One revision round included.',
+    question: 'Do you need product samples?',
+    answer: "We'll confirm that after reviewing the concept. Clear product photographs, packaging references and brand assets are the starting point. If physical samples or a shoot are needed, we'll discuss them before production.",
   },
   {
     number: '03',
-    question: 'How is this cheaper than a shoot?',
-    answer: "We don't have the overheads of a traditional shoot — no large crews, locations or equipment costs — so we can create high-quality videos faster and at a lower cost.",
+    question: 'Who owns the footage?',
+    answer: "We agree on usage rights and deliverables before production. Your proposal will clarify what you can use, where you can use it and whether source files are included.",
   },
   {
     number: '04',
-    question: 'Do you need product samples?',
-    answer: "Not always. If needed, we'll let you know.",
-  },
-  {
-    number: '05',
-    question: 'Who owns the footage?',
-    answer: 'You do. Once the project is complete, you own the final footage and can use it across your channels.',
-  },
-  {
-    number: '06',
     question: 'Can you work with our existing brand guidelines?',
-    answer: 'Yes. We can work within your existing brand guidelines.',
+    answer: "Yes. Share your logo, colours, fonts, tone of voice and any existing guidelines. We use them to keep the work consistent with your brand.",
   },
 ]
 

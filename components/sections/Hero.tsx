@@ -125,18 +125,44 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right side — video placeholder */}
-          <div className="hidden lg:flex items-center justify-center">
-            <div
-              className="w-full rounded-2xl flex items-center justify-center"
-              style={{
-                aspectRatio: '16/9',
-                backgroundColor: '#111',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            >
-              <p className="text-sm" style={{ color: '#3d3d3d' }}>Video coming soon</p>
-            </div>
+          {/* Right side — 3 portrait video cards */}
+          <div className="hidden lg:flex items-center justify-center gap-3">
+            {[
+              { src: '/videos/Types of Fracture.mp4', label: 'Medical' },
+              { src: '/videos/Bastar Tsunami.mp4', label: 'FMCG' },
+              { src: '/videos/asus new.mp4', label: 'Tech' },
+            ].map((video, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 + i * 0.15, duration: 0.7 }}
+                className="relative rounded-2xl overflow-hidden flex-shrink-0"
+                style={{
+                  width: i === 1 ? '140px' : '120px',
+                  aspectRatio: '9/16',
+                  border: i === 1 ? '1.5px solid #C8FF00' : '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: i === 1 ? '0 0 20px rgba(200,255,0,0.2)' : 'none',
+                  transform: i === 0 ? 'translateY(16px)' : i === 2 ? 'translateY(16px)' : 'translateY(0)',
+                }}
+              >
+                <video
+                  src={video.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Label */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-2 py-2"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}
+                >
+                  <span className="text-xs font-semibold" style={{ color: '#C8FF00' }}>{video.label}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

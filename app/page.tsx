@@ -3,12 +3,13 @@
 import Hero from '@/components/sections/Hero'
 import OurWork from '@/components/sections/OurWork'
 import LogoStrip from '@/components/sections/LogoStrip'
+import ProductionAdvantage from '@/components/sections/ProductionAdvantage'
 import HowItWorksNew from '@/components/sections/HowItWorksNew'
 import WhyDifferent2 from '@/components/sections/WhyDifferent2'
+import About from '@/components/sections/About'
 import PerformanceWork from '@/components/sections/PerformanceWork'
 
 import Pricing from '@/components/sections/Pricing'
-import PricingDuplicate from '@/components/sections/PricingDuplicate'
 import TheProof from '@/components/sections/TheProof'
 import VideoPlaceholder from '@/components/sections/VideoPlaceholder'
 import WhatElseWeDo from '@/components/sections/WhatElseWeDo'
@@ -24,20 +25,20 @@ export default function Home() {
   return (
     <main className="bg-black text-white overflow-hidden">
       <Navigation />
-      <Hero />
+      {/* <Hero /> */}
       <OurWork />
       <LogoStrip />
+      <ProductionAdvantage />
       <HowItWorksNew />
-      <WhyDifferent2 />
-      <PerformanceWork />
       <TheProof />
-      <VideoPlaceholder />
+      <WhyDifferent2 />
+      <About />
       <WhatElseWeDo />
-      <Testimonials />
       <FAQ />
+      <VideoPlaceholder />
+      <Testimonials />
       <GetStarted />
-      <Pricing />
-      <PricingDuplicate />
+      {/* <Pricing /> */}
       <Footer />
     </main>
   )
