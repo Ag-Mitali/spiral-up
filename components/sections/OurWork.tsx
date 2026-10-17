@@ -58,9 +58,8 @@ const videos = [
   },
 ]
 
-function VideoCard({ video, index, isMobile }: {
+function VideoCard({ video, isMobile }: {
   video: typeof videos[0]
-  index: number
   isMobile: boolean
 }) {
   const [playing, setPlaying] = useState(false)
@@ -211,7 +210,7 @@ export default function OurWork() {
               gap: '12px',
             }}
           >
-            {videos.map((video, index) => (
+            {videos.map((video) => (
               <div
                 key={video.id}
                 style={{
@@ -221,7 +220,7 @@ export default function OurWork() {
                   aspectRatio: '9/16',
                 }}
               >
-                <VideoCard video={video} index={index} isMobile={true} />
+                <VideoCard video={video} isMobile={true} />
               </div>
             ))}
           </div>
@@ -266,7 +265,7 @@ export default function OurWork() {
               whileHover={{ y: -6, scale: 1.02 }}
               className="flex-shrink-0"
             >
-              <VideoCard video={video} index={index} isMobile={false} />
+              <VideoCard video={video} isMobile={false} />
             </motion.div>
           ))}
         </div>
