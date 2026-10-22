@@ -44,13 +44,10 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">
-            08 · FAQ
-          </span>
-          <div className="h-px w-12 mt-2 bg-red-500/60" />
+          {/* Removed FAQ prefix */}
         </motion.div>
 
-        <div className="grid lg:grid-cols-[380px_1fr] gap-16 items-start">
+        <div className="grid lg:grid-cols-[380px_1fr] gap-8 items-start">
 
           {/* Left */}
           <motion.div
@@ -58,12 +55,12 @@ export default function FAQ() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col"
           >
-            <h2 className="text-3xl md:text-4xl font-black text-white leading-tight">
-              Straight<br />answers<span className="text-red-600">.</span>
+            <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
+              Straight answers,<br /><span className="text-red-600">no fluff</span><span className="text-red-600">.</span>
             </h2>
-            <p className="text-base leading-relaxed" style={{ color: '#6b7280' }}>
+            <p className="text-sm md:text-base text-gray-400 mt-2">
               The questions we get the most, answered.
             </p>
           </motion.div>

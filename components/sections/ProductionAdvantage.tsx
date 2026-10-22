@@ -5,18 +5,21 @@ import { ArrowRight } from 'lucide-react'
 
 const highlights = [
   {
-    value: '⅕',
+    value: '20',
+    suffix: '%',
     label: 'the cost',
     desc: 'High production value at one fifth the cost of a comparable traditional full scale production.',
   },
   {
-    value: '10×',
+    value: '10',
+    suffix: '×',
     label: 'faster',
     desc: 'A faster journey from approved concept to finished film.',
   },
   {
     value: '∞',
-    label: 'Creative possibilities',
+    suffix: '',
+    label: 'Infinite possibilities',
     desc: 'Carefully crafted lighting, texture and movement. Work you can judge for yourself.',
   },
 ]
@@ -35,9 +38,10 @@ export default function ProductionAdvantage() {
           transition={{ duration: 0.5 }}
           className="mb-5"
         >
-          <span className="text-xs font-semibold text-red-500 tracking-widest uppercase">
-            The production advantage
+          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">
+            Advantage
           </span>
+          <div className="h-px w-12 mt-2 bg-red-500/60" />
         </motion.div>
 
         {/* Headline */}
@@ -46,7 +50,7 @@ export default function ProductionAdvantage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="text-4xl md:text-5xl font-black text-white leading-tight mb-5"
+          className="text-2xl md:text-4xl font-bold text-white leading-tight mb-5"
         >
           High production value for a fraction of the cost.
         </motion.h2>
@@ -65,7 +69,7 @@ export default function ProductionAdvantage() {
         </motion.p>
 
         {/* Highlight cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-2 md:gap-4 mb-8">
           {highlights.map((h, i) => (
             <motion.div
               key={i}
@@ -73,33 +77,37 @@ export default function ProductionAdvantage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-              className="rounded-2xl p-5"
+              className="rounded-xl md:rounded-2xl p-3 md:p-5"
               style={{
                 backgroundColor: '#0d0d0d',
                 border: '1px solid rgba(255,255,255,0.09)',
               }}
             >
               <span
-                className="text-5xl font-black leading-none block mb-2"
+                className={`font-black leading-none block mb-1 md:mb-2 ${
+                  h.value === '∞' ? 'text-[2rem] md:text-[3rem]' : 'text-3xl md:text-5xl'
+                }`}
                 style={{ color: '#e53e3e' }}
               >
                 {h.value}
+                {h.suffix && (
+                  <span className="text-[1.2rem] md:text-[1.8rem] align-middle">{h.suffix}</span>
+                )}
               </span>
-              <p className="text-base font-bold text-white mb-2">{h.label}</p>
+              <p className="text-xs md:text-base font-bold text-white mb-1 md:mb-2">{h.label}</p>
               <p className="text-sm leading-relaxed hidden md:block" style={{ color: '#6b7280' }}>{h.desc}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Why stop here + CTA */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col gap-4 max-w-xl"
+          className="max-w-xl"
         >
-          <p className="text-sm font-medium" style={{ color: '#6b7280' }}>Why stop here?</p>
           <button
             className="w-full py-4 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2 group transition-colors duration-200"
             style={{ backgroundColor: '#e53e3e' }}

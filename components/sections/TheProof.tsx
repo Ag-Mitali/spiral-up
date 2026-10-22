@@ -42,10 +42,8 @@ export default function TheProof() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">05 · EXPERIENCE & RESULTS</span>
-          <div className="h-px w-12 mt-2 bg-red-500/60" />
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mt-6 mb-4">
-            Why our creative decisions are different.
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+            Our creative decisions are derived from results.
           </h2>
           <p className="text-base text-gray-400 leading-relaxed max-w-2xl">
             These are results from our work growing businesses across campaigns, sales and communities.
@@ -88,17 +86,21 @@ export default function TheProof() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
-          style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(255,255,255,0.08)' }}
+          className="flex flex-col gap-6"
         >
-          <p className="text-sm md:text-base leading-relaxed max-w-xl" style={{ color: '#9ca3af' }}>
-            Every number here has a story. Pick any one. We&apos;re happy to walk you through the campaign, the thinking and the results on a call.
-          </p>
-          <Link href="/book-a-call" className="flex-shrink-0">
+          <div className="max-w-2xl">
+            <h3 className="text-lg md:text-xl font-bold text-white italic leading-tight mb-2">
+              Every number has a story.
+            </h3>
+            <p className="text-sm md:text-base leading-relaxed" style={{ color: '#9ca3af' }}>
+              Pick any one. We&apos;re happy to walk you through the campaign, the thinking and the results on a call.
+            </p>
+          </div>
+          <Link href="/book-a-call">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-colors duration-200 whitespace-nowrap"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white transition-colors duration-200 w-fit"
               style={{ backgroundColor: '#e53e3e' }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}

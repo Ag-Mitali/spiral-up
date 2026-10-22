@@ -190,9 +190,7 @@ export default function OurWork() {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">01 · OUR WORK</span>
-          <div className="h-px w-12 mt-2 bg-red-500/60" />
-          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mt-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
             If these were on your feed, would you stop scrolling?
           </h2>
           <p className="text-sm md:text-base text-gray-400 mt-2">We create cinematic reels, ads and brand films.</p>

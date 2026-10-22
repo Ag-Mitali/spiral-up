@@ -99,13 +99,23 @@ export default function About() {
             ))}
 
             {/* Divider */}
-            <div className="h-px w-full mt-2" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
+            <div className="h-px w-full mt-2 mb-1" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
 
-            {/* PS note */}
-            <p className="text-sm leading-relaxed" style={{ color: '#4b5563' }}>
-              <span className="font-semibold" style={{ color: '#6b7280' }}>P.S. </span>
-              I've kept this long on purpose to test a few assumptions of my own. Many people won't read this far. If you have, please know that any call you book is 100% no obligation. I'm happy to think about your brand and share ideas with you, even if we don't end up working together.
-            </p>
+            {/* PS note - Enhanced */}
+            <div 
+              className="p-4 rounded-xl border"
+              style={{ 
+                backgroundColor: 'rgba(200,255,0,0.03)', 
+                borderColor: 'rgba(200,255,0,0.1)' 
+              }}
+            >
+              <p className="text-sm leading-relaxed" style={{ color: '#d1d5db' }}>
+                <span className="font-bold text-base" style={{ color: '#C8FF00' }}>P.S. </span>
+                I've kept this long on purpose to test a few assumptions of my own. Many people won't read this far. If you have, please know that any call you book is{' '}
+                <span className="font-semibold" style={{ color: '#C8FF00' }}>100% no obligation</span>. I'm happy to{' '}
+                <span className="font-semibold" style={{ color: '#C8FF00' }}>think about your brand and share ideas with you</span>, even if we don't end up working together.
+              </p>
+            </div>
           </motion.div>
 
         </div>

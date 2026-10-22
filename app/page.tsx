@@ -24,12 +24,12 @@ export default function Home() {
       <ProductionAdvantage />
       <HowItWorksNew />
       <TheProof />
-      <WhyDifferent2 />
-      <About />
       <WhatElseWeDo />
+      {/* <WhyDifferent2 /> */}
+      <About />
       <FAQ />
       <VideoPlaceholder />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <GetStarted />
       <Footer />
     </main>
