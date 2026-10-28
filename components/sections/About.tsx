@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function About() {
   return (
@@ -33,6 +34,18 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="lg:sticky lg:top-28 flex flex-col gap-6"
           >
+            {/* Founder Image */}
+            <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-gray-900">
+              <Image
+                src="/images/1.jpeg"
+                alt="Abhishek Edachali, Founder of Spiral Up Digital"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 400px"
+              />
+            </div>
+
             <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
               A small agency.<br />Personally led.
             </h2>

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Instagram, Linkedin, Mail, MessageCircle, Calendar } from 'lucide-react'
 
 const explore = [
@@ -30,13 +31,15 @@ export default function Footer() {
             className="col-span-2 md:col-span-1 flex flex-col gap-4"
           >
             {/* Logo */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <div className="w-9 h-9 relative flex items-center justify-center flex-shrink-0">
-                <svg width="36" height="36" viewBox="0 0 40 40" className="text-red-500" fill="none">
-                  <path d="M20 5 Q 30 5, 30 15 Q 30 25, 20 25 Q 10 25, 10 15 Q 10 8, 17 8 Q 23 8, 23 14 Q 23 20, 17 20"
-                    stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                  <circle cx="17" cy="20" r="2" fill="currentColor" />
-                </svg>
+                <Image
+                  src="/images/Spiral up logo - new.png"
+                  alt="Spiral Up Digital Logo"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="text-sm font-bold text-white">Spiral Up</span>

@@ -2,28 +2,25 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ArrowDown } from 'lucide-react'
 
 const ACCENT = '#C8FF00'
 
 const steps = [
   {
     number: '01',
-    label: 'Discovery',
-    heading: 'We look at your brand, together.',
-    body: 'Your product, audience, competitors and what you\'re trying to sell. We understand the business before deciding what to make.',
+    heading: 'Share your brand',
+    body: 'Share your product, your audience and what you want to achieve.',
   },
   {
     number: '02',
-    label: 'Briefing',
-    heading: 'We decide what videos it needs.',
-    body: 'Ads, reels, product stories, brand films or creative tests. We agree on the direction and scope before production begins.',
+    heading: 'Approve the idea',
+    body: 'We bring the concepts and creative direction. You approve what we make.',
   },
   {
     number: '03',
-    label: 'Execution',
-    heading: 'We deliver.',
-    body: 'Produced, edited, captioned and formatted for the platforms you need. You review the first cut, we complete the agreed revisions, and deliver the final files.',
+    heading: 'Get your videos',
+    body: 'We produce, refine with your feedback and deliver ready to publish.',
   },
 ]
 
@@ -33,7 +30,17 @@ export default function HowItWorksNew() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
 
         {/* Section label */}
-        {/* Removed section label for cleaner look */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <span className="text-xs font-bold text-red-500 tracking-widest uppercase">
+            HOW IT WORKS
+          </span>
+        </motion.div>
 
         {/* Heading */}
         <motion.h2
@@ -41,66 +48,131 @@ export default function HowItWorksNew() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-2xl md:text-4xl font-bold text-white leading-tight mb-12"
+          className="text-3xl md:text-5xl font-bold text-white leading-tight mb-16"
         >
-          From your brand to scroll-stopping videos, in three steps<span className="text-red-600">.</span>
+          From your brand to scroll stoppers in three steps.
         </motion.h2>
 
-        {/* Steps */}
-        <div className="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch mb-10">
-          {steps.map((step, i) => (
-            <React.Fragment key={step.number}>
+        {/* Timeline - Responsive: Vertical on mobile, Horizontal on desktop */}
+        <div className="mb-8">
+          {/* Mobile: Vertical Timeline */}
+          <div className="flex flex-col gap-0 md:hidden">
+            {steps.map((step, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.12 }}
-                className="rounded-2xl p-6 flex flex-col gap-4"
-                style={{
-                  backgroundColor: '#0d0d0d',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
+                key={step.number}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
+                className="flex gap-6 items-start relative"
               >
-                {/* Number badge and Label - Combined */}
-                <div 
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-3"
-                  style={{
-                    border: `1.5px solid ${ACCENT}`,
-                    boxShadow: `0 0 8px rgba(200,255,0,0.15)`,
-                  }}
-                >
-                  <span className="text-xs font-bold" style={{ color: ACCENT }}>{step.number}</span>
-                  <div className="w-px h-3.5 opacity-40" style={{ backgroundColor: ACCENT }} />
-                  <span className="text-xs font-bold tracking-wider uppercase" style={{ color: ACCENT }}>
-                    {step.label}
-                  </span>
+                {/* Number Circle with connecting line */}
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <motion.div 
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.2 + 0.1, type: "spring", stiffness: 200 }}
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg z-10"
+                    style={{
+                      backgroundColor: '#000',
+                      border: `3px solid ${ACCENT}`,
+                      color: ACCENT,
+                    }}
+                  >
+                    {step.number}
+                  </motion.div>
+                  {/* Connecting line with arrow */}
+                  {i < steps.length - 1 && (
+                    <div className="flex flex-col items-center">
+                      <motion.div 
+                        initial={{ height: 0 }}
+                        whileInView={{ height: '4rem' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: i * 0.2 + 0.3 }}
+                        className="w-0.5 overflow-hidden"
+                        style={{ backgroundColor: ACCENT }}
+                      />
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: i * 0.2 + 0.5 }}
+                      >
+                        <ArrowDown size={16} strokeWidth={3} style={{ color: ACCENT, marginTop: '-4px' }} />
+                      </motion.div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Text */}
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-base font-bold text-white leading-snug">
+                {/* Content */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.2 + 0.2 }}
+                  className="flex-1 pb-8"
+                >
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {step.heading}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#6b7280' }}>
+                  <p className="text-sm leading-relaxed" style={{ color: '#9ca3af' }}>
                     {step.body}
                   </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow between steps */}
-              {i < steps.length - 1 && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.25 + i * 0.12 }}
-                  className="hidden md:flex items-center justify-center px-1"
-                >
-                  <ArrowRight size={16} strokeWidth={1.5} style={{ color: ACCENT }} />
                 </motion.div>
-              )}
-            </React.Fragment>
-          ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop: Horizontal Timeline */}
+          <div className="hidden md:flex md:items-start md:justify-between md:gap-4">
+            {steps.map((step, i) => (
+              <React.Fragment key={step.number}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.15 }}
+                  className="flex flex-col items-start flex-1"
+                >
+                  {/* Number Circle */}
+                  <div 
+                    className="w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0 mb-6"
+                    style={{
+                      backgroundColor: '#000',
+                      border: `3px solid ${ACCENT}`,
+                      color: ACCENT,
+                    }}
+                  >
+                    {step.number}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+                      {step.heading}
+                    </h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#9ca3af' }}>
+                      {step.body}
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Horizontal arrow between items */}
+                {i < steps.length - 1 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.25 + i * 0.15 }}
+                    className="flex items-start pt-6 flex-shrink-0"
+                  >
+                    <ArrowRight size={24} strokeWidth={2.5} style={{ color: ACCENT }} />
+                  </motion.div>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
 
         {/* CTA */}
@@ -108,17 +180,22 @@ export default function HowItWorksNew() {
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          className="max-w-xl"
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           <button
-            className="w-full py-4 rounded-xl font-bold text-white text-sm flex items-center justify-center gap-2 group transition-colors duration-200"
+            className="w-full py-4 rounded-2xl font-bold text-white text-base flex items-center justify-center gap-2 group transition-all duration-200"
             style={{ backgroundColor: '#e53e3e' }}
-            onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
-            onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
+            onMouseEnter={e => {
+              e.currentTarget.style.backgroundColor = '#c53030'
+              e.currentTarget.style.transform = 'translateY(-2px)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.backgroundColor = '#e53e3e'
+              e.currentTarget.style.transform = 'translateY(0)'
+            }}
           >
-            Set up a discovery call
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            Let&apos;s start with your brand
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </motion.div>
 

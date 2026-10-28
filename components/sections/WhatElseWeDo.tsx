@@ -1,151 +1,231 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { ArrowRight, BarChart2 } from 'lucide-react'
-import Link from 'next/link'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+import { useRef } from 'react'
 
 const services = [
   {
     number: '01',
-    title: 'Performance Marketing',
-    desc: 'Lead generation, D2C and quick commerce.',
-    logos: ['Meta', 'Google', 'Blinkit'],
+    title: 'Brand Strategy & Go to Market',
+    desc: 'Positioning, audience insight, offers and messaging. Give the right customer a clear reason to care, believe and act.',
   },
   {
     number: '02',
-    title: 'Social Media Management',
-    desc: 'Strategy, content planning and community management, built around your brand and audience.',
-    logos: [],
+    title: 'Performance Marketing',
+    desc: 'Lead generation, ecommerce and quick commerce. Connect campaigns to qualified enquiries, purchases and sales.',
   },
   {
     number: '03',
-    title: 'SEO',
-    desc: 'Search visibility that helps the right people discover your business.',
-    logos: [],
+    title: 'Social Media Management',
+    desc: 'Strategy, content and community. Build a recognisable presence that gives people a reason to follow, engage and return.',
   },
   {
     number: '04',
-    title: 'Websites, Apps & Tools',
-    desc: 'Digital experiences built around what your business and its users need.',
-    logos: [],
+    title: 'Websites, Apps & Automation',
+    desc: 'Websites, landing pages, apps and practical tools. Make the next step easier for customers and follow through easier for your team.',
   },
   {
     number: '05',
-    title: 'Brand & Go-to-Market Strategy',
-    desc: 'Positioning, messaging and a clear plan for taking your brand or product to market.',
-    logos: [],
+    title: 'SEO, AEO & GEO',
+    desc: 'Help the right people discover your business through search engines, AI assistants and generative search experiences.',
   },
 ]
 
 export default function WhatElseWeDo() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  })
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.3, 1, 1, 0.3])
+
   return (
-    <section className="py-14 md:py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+    <section ref={sectionRef} className="py-14 md:py-24 bg-black relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <motion.div 
+        className="absolute inset-0 opacity-20"
+        style={{ y: backgroundY }}
+      >
+        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
+      </motion.div>
 
-        {/* Section label */}
+      <motion.div style={{ opacity }} className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+
+        {/* Section label with animated underline */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
+          transition={{ duration: 0.6 }}
+          className="mb-6 inline-block"
         >
-          <span className="text-sm font-semibold text-red-500 tracking-widest uppercase">
-            What else we do
+          <span className="text-xs font-bold text-red-500 tracking-widest uppercase relative">
+            WHAT ELSE WE DO
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="absolute -bottom-1 left-0 h-[2px] bg-red-500"
+            />
           </span>
-          <div className="h-px w-12 mt-2 bg-red-500/60" />
         </motion.div>
 
-        {/* Heading */}
+        {/* Heading with CTA on right */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-12"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12 md:mb-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-            Video is where most brands start with us.<br />
-            <span style={{ color: '#9ca3af' }}>It&apos;s not where it ends.</span>
-          </h2>
+          <div className="flex-1">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              <motion.span 
+                className="block md:inline"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                Build demand.{' '}
+              </motion.span>
+              <motion.span 
+                className="block md:inline"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                Capture it.
+              </motion.span>
+              <br className="hidden md:block" />
+              <motion.span 
+                className="block bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                Convert it.
+              </motion.span>
+            </h2>
+            <motion.p 
+              className="text-sm md:text-base lg:text-lg" 
+              style={{ color: '#d1d5db' }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+            >
+              Start with the business. Then build the marketing.
+            </motion.p>
+          </div>
+
+          {/* CTA Button - Right side on desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="lg:flex-shrink-0"
+          >
+            <motion.button
+              className="relative w-full lg:w-auto py-4 lg:py-5 px-8 lg:px-10 rounded-2xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 group overflow-hidden whitespace-nowrap"
+              style={{ backgroundColor: '#e53e3e' }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#c53030'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#e53e3e'
+              }}
+            >
+              {/* Animated background gradient */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              
+              <span className="relative z-10">Let&apos;s talk growth</span>
+              <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
+              
+              {/* Pulse ring */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl border-2 border-red-400"
+                initial={{ scale: 1, opacity: 0.5 }}
+                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.button>
+          </motion.div>
         </motion.div>
 
-        {/* Service cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {services.map((s, i) => (
+        {/* Services Grid with enhanced cards */}
+        <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 lg:gap-6">
+          {services.map((service, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="rounded-2xl p-6 flex flex-col gap-4 transition-all duration-200 group"
-              style={{
-                backgroundColor: '#0d0d0d',
-                border: '1px solid rgba(255,255,255,0.08)',
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.1 + i * 0.1,
+                ease: [0.21, 0.47, 0.32, 0.98]
               }}
-              onMouseEnter={e => (e.currentTarget.style.borderColor = 'rgba(200,255,0,0.2)')}
-              onMouseLeave={e => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
+              whileHover={{ 
+                scale: 1.03,
+                transition: { duration: 0.2 }
+              }}
+              className="group relative p-6 rounded-2xl border transition-all duration-300 cursor-pointer"
+              style={{ 
+                borderColor: 'rgba(255,255,255,0.08)',
+                background: 'rgba(255,255,255,0.02)'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#C8FF00'
+                e.currentTarget.style.background = 'rgba(200,255,0,0.05)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+                e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+              }}
             >
-              <span className="text-xs font-semibold" style={{ color: '#C8FF00' }}>{s.number}</span>
-              <h3 className="text-base font-bold text-white leading-snug">{s.title}</h3>
-              <p className="text-sm leading-relaxed flex-1" style={{ color: '#6b7280' }}>{s.desc}</p>
+              {/* Glow effect on hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-green-500/0 to-green-500/0 group-hover:from-green-500/10 group-hover:to-transparent transition-all duration-300 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <motion.span 
+                  className="text-2xl md:text-3xl font-bold block mb-4"
+                  style={{ color: '#C8FF00' }}
+                  initial={{ scale: 1 }}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {service.number}
+                </motion.span>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-sm md:text-base leading-relaxed" style={{ color: '#9ca3af' }}>
+                  {service.desc}
+                </p>
+              </div>
 
-              {/* Platform logos */}
-              {s.logos.length > 0 && (
-                <div className="flex gap-2 flex-wrap mt-1">
-                  {s.logos.map((logo, j) => (
-                    <span
-                      key={j}
-                      className="text-xs px-2.5 py-1 rounded-full font-medium"
-                      style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: '#6b7280', border: '1px solid rgba(255,255,255,0.08)' }}
-                    >
-                      {logo}
-                    </span>
-                  ))}
-                </div>
-              )}
+              {/* Corner accent */}
+              <motion.div 
+                className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-green-500/20 to-transparent rounded-tr-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              />
             </motion.div>
           ))}
         </div>
 
-        {/* Closing + CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
-          style={{ backgroundColor: '#0d0d0d', border: '1px solid rgba(255,255,255,0.08)' }}
-        >
-          <div className="flex items-start gap-4">
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-              style={{ backgroundColor: 'rgba(200,255,0,0.08)', border: '1.5px solid rgba(200,255,0,0.3)' }}
-            >
-              <BarChart2 size={15} style={{ color: '#C8FF00' }} />
-            </div>
-            <p className="text-sm md:text-base leading-relaxed" style={{ color: '#9ca3af' }}>
-              Most clients start with a video project and expand.<br className="hidden md:block" />
-              <span style={{ color: '#6b7280' }}> Some hand us the whole thing.</span>
-            </p>
-          </div>
-          <Link href="/book-a-call" className="flex-shrink-0">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white group transition-colors duration-200 whitespace-nowrap"
-              style={{ backgroundColor: '#e53e3e' }}
-              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
-              onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
-            >
-              Book a call
-              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-          </Link>
-        </motion.div>
-
-      </div>
+      </motion.div>
     </section>
   )
 }

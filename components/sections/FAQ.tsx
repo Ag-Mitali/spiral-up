@@ -7,23 +7,28 @@ import { Plus, Minus } from 'lucide-react'
 const faqs = [
   {
     number: '01',
-    question: "What if I don't like the first cut?",
-    answer: "We agree on the creative direction before production, then use your feedback to refine the first cut. The scope and revision process are agreed before we begin.",
+    question: 'What happens on the first call?',
+    answer: "Tell us about your business, what you want to achieve and what's getting in the way. We'll ask questions, share our initial thinking and explore where we can help. If there's a fit, we follow up with a proposed direction for your approval. No obligation.",
   },
   {
     number: '02',
-    question: 'Do you need product samples?',
-    answer: "We'll confirm that after reviewing the concept. Clear product photographs, packaging references and brand assets are the starting point. If physical samples or a shoot are needed, we'll discuss them before production.",
+    question: "We already do marketing. Can you help us figure out what's missing?",
+    answer: "Yes. We look at what you're already doing, what's working and where the gaps are. That could mean supporting your existing team, improving one part of the marketing or taking on a broader role. The recommendation follows the business need.",
   },
   {
     number: '03',
-    question: 'Who owns the footage?',
-    answer: "We agree on usage rights and deliverables before production. Your proposal will clarify what you can use, where you can use it and whether source files are included.",
+    question: 'How much of my time will this take?',
+    answer: "We need your business knowledge, access to the right information and feedback at agreed checkpoints. We handle the planning, coordination and execution, with a clear process for your approvals.",
   },
   {
     number: '04',
-    question: 'Can you work with our existing brand guidelines?',
-    answer: "Yes. Share your logo, colours, fonts, tone of voice and any existing guidelines. We use them to keep the work consistent with your brand.",
+    question: 'Can we start with one specific problem?',
+    answer: "Absolutely. You might need better leads, stronger sales, a clearer brand story or support with a launch. We can start with a focused brief and build from there as the business needs evolve.",
+  },
+  {
+    number: '05',
+    question: "What if what we're asking for isn't what the business needs?",
+    answer: "We'll tell you. We question the brief, explain our reasoning and recommend where we believe your effort and budget will do more good. You approve the direction before we proceed.",
   },
 ]
 

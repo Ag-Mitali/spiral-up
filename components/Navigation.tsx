@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,28 +43,18 @@ export default function Navigation() {
           <motion.a
             href="/"
             whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-2 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group"
           >
-            {/* Spiral Logo */}
+            {/* Spiral Logo Image */}
             <div className="w-10 h-10 relative flex items-center justify-center">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 40 40"
-                className="text-red-500"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Spiral shape */}
-                <path
-                  d="M20 5 Q 30 5, 30 15 Q 30 25, 20 25 Q 10 25, 10 15 Q 10 8, 17 8 Q 23 8, 23 14 Q 23 20, 17 20"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  fill="none"
-                />
-                <circle cx="17" cy="20" r="2" fill="currentColor" />
-              </svg>
+              <Image
+                src="/images/Spiral up logo - new.png"
+                alt="Spiral Up Digital Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col leading-tight">
               <span className="text-sm font-bold text-white">Spiral Up</span>

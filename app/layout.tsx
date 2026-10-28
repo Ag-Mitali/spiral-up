@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'Spiral Up Digital',
   description: 'Transform your vision into reality with cutting-edge AI videos, professional ads, and stunning websites. Your digital transformation starts here.',
   keywords: 'AI videos, digital marketing, advertising, web design, Spiral Up Digital',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'Spiral Up Digital',
     description: 'Transform your vision into reality with AI-powered solutions',
