@@ -206,6 +206,7 @@ export default function TheProof() {
       container.addEventListener('mousemove', handleMouseMove)
       return () => container.removeEventListener('mousemove', handleMouseMove)
     }
+    return undefined
   }, [mouseX, mouseY])
 
   return (
