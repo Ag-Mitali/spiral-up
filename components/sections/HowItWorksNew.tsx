@@ -88,7 +88,6 @@ export default function HowItWorksNew() {
         {/* ── MOBILE: vertical timeline ── */}
         <div className="flex flex-col md:hidden mb-10 gap-0">
           {steps.map((step, i) => {
-            const Icon = step.icon
             return (
               <div key={step.number} className="flex gap-5 items-start">
                 {/* Timeline spine */}
