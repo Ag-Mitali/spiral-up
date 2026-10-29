@@ -30,7 +30,7 @@ export default function GetStarted() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
             Bring us your business goals.{' '}
             <span style={{ color: '#C8FF00' }}>Leave the rest to us.</span>
           </h2>
@@ -68,7 +68,7 @@ export default function GetStarted() {
 
           {/* WhatsApp CTA */}
           <a
-            href="https://wa.me/"
+            href="https://wa.me/917710043210"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2 group transition-all duration-200"

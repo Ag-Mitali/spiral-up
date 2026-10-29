@@ -46,7 +46,7 @@ export default function About() {
               />
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight">
               A small agency.<br />Personally led.
             </h2>
 

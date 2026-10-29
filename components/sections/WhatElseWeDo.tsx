@@ -84,7 +84,7 @@ export default function WhatElseWeDo() {
           className="mb-12 md:mb-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12"
         >
           <div className="flex-1">
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
               <motion.span 
                 className="block md:inline"
                 initial={{ opacity: 0, y: 20 }}
@@ -105,11 +105,12 @@ export default function WhatElseWeDo() {
               </motion.span>
               <br className="hidden md:block" />
               <motion.span 
-                className="block bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent"
+                className="block"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.7 }}
+                style={{ color: '#C8FF00' }}
               >
                 Convert it.
               </motion.span>
@@ -135,28 +136,26 @@ export default function WhatElseWeDo() {
             className="lg:flex-shrink-0"
           >
             <motion.button
-              className="relative w-full lg:w-auto py-4 lg:py-5 px-8 lg:px-10 rounded-2xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 group overflow-hidden whitespace-nowrap"
-              style={{ backgroundColor: '#e53e3e' }}
+              className="relative w-full lg:w-auto py-4 lg:py-5 px-8 lg:px-10 rounded-2xl font-bold text-black text-base md:text-lg flex items-center justify-center gap-3 group overflow-hidden whitespace-nowrap"
+              style={{ backgroundColor: '#C8FF00' }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#c53030'
+                e.currentTarget.style.backgroundColor = '#b8ef00'
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(200,255,0,0.4)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = '#e53e3e'
+                e.currentTarget.style.backgroundColor = '#C8FF00'
+                e.currentTarget.style.boxShadow = 'none'
               }}
             >
-              {/* Animated background gradient */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-red-600 to-red-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              />
-              
               <span className="relative z-10">Let&apos;s talk growth</span>
               <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
               
               {/* Pulse ring */}
               <motion.div
-                className="absolute inset-0 rounded-2xl border-2 border-red-400"
+                className="absolute inset-0 rounded-2xl border-2"
+                style={{ borderColor: '#C8FF00' }}
                 initial={{ scale: 1, opacity: 0.5 }}
                 animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}

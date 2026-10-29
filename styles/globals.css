@@ -2,20 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add text-2xs utility that might be missing */
+/* ─── Fibonacci Type Scale Utilities ─────────────────────────────────────────
+ *
+ * Fibonacci: 8 · 13 · 21 · 34 · 55 · 89
+ *
+ * Usage:
+ *   fib-label    → section labels  (WHAT ELSE WE DO, HOW IT WORKS…)
+ *   fib-body-sm  → descriptions, card copy
+ *   fib-body     → primary body paragraphs
+ *   fib-h3       → card/sub-section headings
+ *   fib-h2       → section headings  (responsive: 34 → 55px)
+ *   fib-h1       → hero / page title (responsive: 34 → 55 → 89px)
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+@layer components {
+
+  /* Section label — 13px, all-caps, wide tracking */
+  .fib-label {
+    font-size: 0.8125rem;     /* 13px */
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+
+  /* Body small — 16px */
+  .fib-body-sm {
+    font-size: 1rem;          /* 16px */
+    font-weight: 400;
+    line-height: 1.65;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+
+  /* Body — 21px */
+  .fib-body {
+    font-size: 1.3125rem;     /* 21px */
+    font-weight: 400;
+    line-height: 1.7;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+
+  /* H3 / card heading — 21px mobile → 34px desktop */
+  .fib-h3 {
+    font-size: 1.3125rem;     /* 21px */
+    font-weight: 700;
+    line-height: 1.3;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+  @media (min-width: 768px) {
+    .fib-h3 { font-size: 2.125rem; } /* 34px */
+  }
+
+  /* H2 / section heading — 34px mobile → 55px desktop */
+  .fib-h2 {
+    font-size: 2.125rem;      /* 34px */
+    font-weight: 700;
+    line-height: 1.15;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+  @media (min-width: 1024px) {
+    .fib-h2 { font-size: 3.4375rem; } /* 55px */
+  }
+
+  /* H1 / hero heading — 34px → 55px → 89px */
+  .fib-h1 {
+    font-size: 2.125rem;      /* 34px */
+    font-weight: 800;
+    line-height: 1.05;
+    font-family: var(--font-inter), Inter, system-ui, sans-serif;
+  }
+  @media (min-width: 768px) {
+    .fib-h1 { font-size: 3.4375rem; } /* 55px */
+  }
+  @media (min-width: 1024px) {
+    .fib-h1 { font-size: 5.5625rem; } /* 89px */
+  }
+}
+
+/* ─── Base Global Styles ─────────────────────────────────────────────────── */
+
+@layer base {
+  /* Apply Inter to everything */
+  html {
+    font-family: var(--font-inter), Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ─── Legacy / custom utilities ───────────────────────────────────────────── */
+
 @layer utilities {
   .text-2xs {
     font-size: 0.6875rem; /* 11px */
-    line-height: 1rem; /* 16px */
+    line-height: 1rem;
   }
 }
 
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  --accent: #ff0000;
-  --accent-dark: #cc0000;
-  
+  --accent: #e53e3e;
+  --accent-dark: #c53030;
+  --lime: #C8FF00;
+
   color-scheme: dark;
 }
 
@@ -32,11 +123,11 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-inter), Inter, system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
 
-/* Mobile spacing fix - add padding on small screens only */
+/* Mobile spacing fix */
 @media (max-width: 1023px) {
   .max-w-7xl {
     padding-left: 1.5rem !important;
@@ -45,47 +136,23 @@ body {
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ff0000 0%, #ff0000 30%, #000000 70%, #000000 100%);
+  background: linear-gradient(180deg, #e53e3e 0%, #e53e3e 30%, #000 70%, #000 100%);
   border-radius: 6px;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 8px rgba(229, 62, 62, 0.5);
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #ff3333 0%, #ff3333 30%, #1a1a1a 70%, #1a1a1a 100%);
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+  background: linear-gradient(180deg, #fc4444 0%, #fc4444 30%, #1a1a1a 70%, #1a1a1a 100%);
 }
 
-/* Horizontal scrollbar for OurWork section */
-.video-scroll::-webkit-scrollbar {
-  height: 8px !important;
-  width: 8px !important;
-}
-
-.video-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border-radius: 4px !important;
-}
-
+/* Horizontal scrollbar for OurWork */
+.video-scroll::-webkit-scrollbar { height: 8px !important; width: 8px !important; }
+.video-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.3) !important; border-radius: 4px !important; }
 .video-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #ff0000 0%, #ff0000 30%, #000000 70%, #000000 100%) !important;
+  background: linear-gradient(90deg, #e53e3e 0%, #e53e3e 30%, #000 70%, #000 100%) !important;
   border-radius: 4px !important;
-  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5) !important;
+  box-shadow: 0 0 8px rgba(229,62,62,0.5) !important;
 }
-
-.video-scroll::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(90deg, #ff3333 0%, #ff3333 30%, #1a1a1a 70%, #1a1a1a 100%) !important;
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7) !important;
-}
-
-.video-scroll::-webkit-scrollbar-corner {
-  background: transparent !important;
-}
+.video-scroll::-webkit-scrollbar-corner { background: transparent !important; }

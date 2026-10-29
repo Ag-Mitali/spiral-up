@@ -6,12 +6,12 @@ import Image from 'next/image'
 import { ArrowRight, Instagram, Linkedin, Mail, MessageCircle, Calendar } from 'lucide-react'
 
 const explore = [
-  { label: 'Work', href: '#portfolio' },
-  { label: 'How It Works', href: '#services' },
-  { label: 'Results', href: '#results' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#what-we-do' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Work',         href: '#work' },
+  { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Results',      href: '#results' },
+  { label: 'About',        href: '#about' },
+  { label: 'Services',     href: '#services' },
+  { label: 'Contact',      href: '#contact' },
 ]
 
 export default function Footer() {
@@ -94,7 +94,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer"
+                <a href="https://wa.me/917710043210" target="_blank" rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
@@ -104,7 +104,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@spiralupdigital.com"
+                <a href="mailto:abhishek@spiralup.digital"
                   className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
@@ -127,7 +127,7 @@ export default function Footer() {
             <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4b5563' }}>Social</p>
             <ul className="flex flex-col gap-3">
               <li>
-                <a href="#" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                <a href="https://www.instagram.com/spiralup.digital" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
                   <Instagram size={14} />
@@ -135,7 +135,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                <a href="https://www.linkedin.com/company/spiralupdigital/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
                   <Linkedin size={14} />
@@ -153,7 +153,7 @@ export default function Footer() {
           style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
         >
           <p className="text-xs" style={{ color: '#374151' }}>© 2026 Spiral Up Digital</p>
-          <a href="#" className="text-xs transition-colors duration-200" style={{ color: '#374151' }}
+          <a href="/privacy-policy" className="text-xs transition-colors duration-200" style={{ color: '#374151' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#6b7280')}
             onMouseLeave={e => (e.currentTarget.style.color = '#374151')}>
             Privacy Policy

@@ -20,12 +20,12 @@ export default function Navigation() {
   }, [])
 
   const navItems = [
-    { label: 'Work', href: '#portfolio' },
-    { label: 'How It Works', href: '#services' },
-    { label: 'Results', href: '#results' },
-    { label: 'About', href: '#about' },
-    { label: 'Services', href: '#what-we-do' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Work',         href: '#work' },
+    { label: 'How It Works', href: '#how-it-works' },
+    { label: 'Results',      href: '#results' },
+    { label: 'About',        href: '#about' },
+    { label: 'Services',     href: '#services' },
+    { label: 'Contact',      href: '#contact' },
   ]
 
   return (
@@ -210,7 +210,7 @@ export default function Navigation() {
                   </div>
 
                   <a
-                    href="https://wa.me/"
+                    href="https://wa.me/917710043210"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 w-full py-3.5 rounded-2xl font-semibold text-sm flex items-center justify-center gap-2 transition-colors duration-200"

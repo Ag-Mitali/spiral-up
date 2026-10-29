@@ -46,7 +46,7 @@ export default function CTA() {
             </div>
 
             <p className="text-sm text-gray-400 pt-4">
-              Or reach out directly at hello@spiralupdigital.com
+              Or reach out directly at abhishek@spiralup.digital
             </p>
           </div>
         </motion.div>

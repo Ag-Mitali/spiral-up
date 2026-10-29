@@ -221,7 +221,7 @@ export default function TheProof() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
             Our creative decisions are derived from results.
           </h2>
           <p className="text-base text-gray-400 leading-relaxed max-w-2xl">
