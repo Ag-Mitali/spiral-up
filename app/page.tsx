@@ -2,6 +2,7 @@
 
 import OurWork from '@/components/sections/OurWork'
 import LogoStrip from '@/components/sections/LogoStrip'
+import FourAngelsVideo from '@/components/sections/FourAngelsVideo'
 import ProductionAdvantage from '@/components/sections/ProductionAdvantage'
 import HowItWorksNew from '@/components/sections/HowItWorksNew'
 import TheProof from '@/components/sections/TheProof'
@@ -18,6 +19,7 @@ export default function Home() {
       <Navigation />
       <div id="work"><OurWork /></div>
       <LogoStrip />
+      <FourAngelsVideo />
       <ProductionAdvantage />
       <div id="how-it-works"><HowItWorksNew /></div>
       <div id="results"><TheProof /></div>
