@@ -3,18 +3,25 @@
 import { motion } from 'framer-motion'
 
 const logos = [
-  { name: 'Google',    style: 'font-bold tracking-tight' },
-  { name: 'Amazon',    style: 'font-bold tracking-tight' },
-  { name: 'Nike',      style: 'font-black italic tracking-widest uppercase' },
-  { name: 'Apple',     style: 'font-light tracking-[0.2em] uppercase' },
-  { name: 'Samsung',   style: 'font-semibold tracking-wide' },
-  { name: 'Zomato',    style: 'font-extrabold tracking-tight' },
-  { name: 'Nykaa',     style: 'font-bold tracking-widest uppercase' },
-  { name: 'Myntra',    style: 'font-semibold tracking-wide' },
-  { name: 'Mamaearth', style: 'font-medium tracking-wide' },
-  { name: 'boAt',      style: 'font-black tracking-tight' },
-  { name: 'Noise',     style: 'font-bold tracking-widest uppercase' },
-  { name: 'Lenskart',  style: 'font-semibold tracking-wide' },
+  { src: '/images/22.png', alt: 'Brand 22' },
+  { src: '/images/23.png', alt: 'Brand 23' },
+  { src: '/images/24.png', alt: 'Brand 24' },
+  { src: '/images/25.png', alt: 'Brand 25' },
+  { src: '/images/26.png', alt: 'Brand 26' },
+  { src: '/images/27.png', alt: 'Brand 27' },
+  { src: '/images/28.png', alt: 'Brand 28' },
+  { src: '/images/29.png', alt: 'Brand 29' },
+  { src: '/images/30.png', alt: 'Brand 30' },
+  { src: '/images/31.png', alt: 'Brand 31' },
+  { src: '/images/32.png', alt: 'Brand 32' },
+  { src: '/images/33.png', alt: 'Brand 33' },
+  { src: '/images/34.png', alt: 'Brand 34' },
+  { src: '/images/35.png', alt: 'Brand 35' },
+  { src: '/images/36.png', alt: 'Brand 36' },
+  { src: '/images/37.png', alt: 'Brand 37' },
+  { src: '/images/38.png', alt: 'Brand 38' },
+  { src: '/images/39.png', alt: 'Brand 39' },
+  { src: '/images/40.png', alt: 'Brand 40' },
 ]
 
 // Duplicate for seamless infinite scroll
@@ -51,11 +58,14 @@ export default function LogoStrip() {
               {/* Dot separator */}
               <span className="w-1 h-1 rounded-full bg-red-500/40 flex-shrink-0" />
 
-              <span
-                className={`text-xl text-gray-400/60 hover:text-gray-300 transition-colors duration-300 whitespace-nowrap ${logo.style}`}
-              >
-                {logo.name}
-              </span>
+              <div className="relative h-20 w-auto flex items-center">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  className="h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                  style={{ imageRendering: 'auto' }}
+                />
+              </div>
             </div>
           ))}
         </motion.div>
