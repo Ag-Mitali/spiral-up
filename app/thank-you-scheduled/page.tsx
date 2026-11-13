@@ -65,8 +65,8 @@ export default function ThankYouScheduledPage() {
           <ul className="flex flex-col gap-3">
             {[
               'A 20-minute no-obligation conversation',
-              'We'll ask about your business and goals',
-              'You'll get honest, direct feedback from us',
+              "We'll ask about your business and goals",
+              "You'll get honest, direct feedback from us",
               'No hard sell — just clarity on how we can help',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-gray-300">
