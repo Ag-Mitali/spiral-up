@@ -46,9 +46,8 @@ function MeshFlowBackground({ mouseX, mouseY }: { mouseX: any; mouseY: any }) {
       const rect = canvas.getBoundingClientRect()
       canvas.width = rect.width
       canvas.height = rect.height
+      initPoints()
     }
-    updateSize()
-    window.addEventListener('resize', updateSize)
 
     // Grid configuration
     const cols = 24
@@ -70,10 +69,21 @@ function MeshFlowBackground({ mouseX, mouseY }: { mouseX: any; mouseY: any }) {
         }
       }
     }
-    initPoints()
 
-    let currentMouseX = canvas.width / 2
+    // Initial size
+    updateSize()
+
+    // Re-measure after layout settles (important on mobile)
+    const timer = setTimeout(() => updateSize(), 300)
+
+    window.addEventListener('resize', updateSize)
+
+    // ResizeObserver covers mobile layout shifts
+    const resizeObserver = new ResizeObserver(() => updateSize())
+    resizeObserver.observe(canvas)
+
     let currentMouseY = canvas.height / 2
+    let currentMouseX = canvas.width / 2
     let animationId: number
 
     // Subscribe to motion values
@@ -173,6 +183,8 @@ function MeshFlowBackground({ mouseX, mouseY }: { mouseX: any; mouseY: any }) {
     return () => {
       window.removeEventListener('resize', updateSize)
       cancelAnimationFrame(animationId)
+      clearTimeout(timer)
+      resizeObserver.disconnect()
       unsubscribeX()
       unsubscribeY()
     }
@@ -230,7 +242,7 @@ export default function TheProof() {
         </motion.div>
 
         {/* Stats grid with Mesh Flow Background */}
-        <div ref={containerRef} className="relative mb-14" style={{ minHeight: '600px' }}>
+        <div ref={containerRef} className="relative mb-14">
           {/* Mesh Flow Canvas */}
           <MeshFlowBackground mouseX={mouseX} mouseY={mouseY} />
           
@@ -289,7 +301,7 @@ export default function TheProof() {
               Pick any one. We&apos;re happy to walk you through the campaign, the thinking and the results on a call.
             </p>
           </div>
-          <Link href="/book-a-call">
+          <Link href="/book-a-call?source=The Proof — Results">
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}

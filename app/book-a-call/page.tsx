@@ -2,342 +2,248 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, Suspense } from 'react'
-import { ArrowRight, ArrowLeft, AlertCircle } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Check } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 
-interface FormData {
-  name: string
-  email: string
-  phoneNumber: string
-  company: string
-  companyWebsite: string
-  roleTitle: string
-  inquiry: string
-}
-
-const questions = [
-  {
-    id: 'name',
-    question: "What's your full name?",
-    intro: "Let's start with introductions.",
-    placeholder: 'Your full name',
-    type: 'text',
-  },
-  {
-    id: 'email',
-    question: 'What\'s your email?',
-    intro: 'We\'ll use this to contact you.',
-    placeholder: 'your@email.com',
-    type: 'email',
-  },
-  {
-    id: 'phoneNumber',
-    question: 'What\'s your phone number?',
-    intro: 'How can we reach you?',
-    placeholder: '+1 (555) 123-4567',
-    type: 'tel',
-  },
-  {
-    id: 'company',
-    question: 'What\'s your company name?',
-    intro: 'Tell us about your brand.',
-    placeholder: 'Your company name',
-    type: 'text',
-  },
-  {
-    id: 'companyWebsite',
-    question: 'What\'s your company website?',
-    intro: 'Any website or social link?',
-    placeholder: 'https://yourcompany.com',
-    type: 'url',
-  },
-  {
-    id: 'roleTitle',
-    question: 'What\'s your role & title?',
-    intro: 'What do you do?',
-    placeholder: 'e.g., Marketing Manager',
-    type: 'text',
-  },
-  {
-    id: 'inquiry',
-    question: 'What are you inquiring about?',
-    intro: 'Why do you want to schedule a call?',
-    placeholder: 'Tell us about your project...',
-    type: 'textarea',
-  },
+const SERVICES = [
+  'Reels & Ad Generation',
+  'Performance Marketing',
+  'Brand Strategy & Go to Market',
+  'Social Media Management',
+  'Websites, Apps & Automation',
+  'SEO, AEO & GEO',
+  'Other',
 ]
+
+const steps = [
+  { id: 'name',     intro: 'Introductions',   question: "What's your full name?",              placeholder: 'Your full name',   type: 'text'     },
+  { id: 'company',  intro: 'Your brand',       question: "What's your company name?",           placeholder: 'Company name',     type: 'text'     },
+  { id: 'email',    intro: 'Stay in touch',    question: "What's your work email?",             placeholder: 'you@company.com',  type: 'email'    },
+  { id: 'phone',    intro: 'Stay in touch',    question: "What's your phone number?",           placeholder: '+91 XXXXX XXXXX',  type: 'tel'      },
+  { id: 'services', intro: 'Your goals',       question: 'What are you looking to work on?',   type: 'checkbox'                                  },
+]
+
+const PERSONAL_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com','rediffmail.com','icloud.com','live.com','ymail.com','aol.com','yahoo.in']
+
+interface FormData { name: string; company: string; email: string; phone: string; services: string[] }
+
+function validateField(id: string, formData: FormData): string | null {
+  if (id === 'email') {
+    const email = formData.email.trim()
+    if (!email.includes('@') || !email.includes('.')) return 'Please enter a valid email address'
+    const domain = email.split('@')[1]?.toLowerCase()
+    if (PERSONAL_DOMAINS.includes(domain)) return 'Please use your work email — not Gmail, Yahoo etc.'
+    return null
+  }
+  if (id === 'phone') {
+    const digits = formData.phone.replace(/\D/g, '')
+    if (digits.length < 10) return 'Please enter a valid phone number (at least 10 digits)'
+    return null
+  }
+  if (id === 'services') return formData.services.length === 0 ? 'Please select at least one' : null
+  const val = formData[id as keyof Omit<FormData,'services'>]?.trim()
+  return !val ? 'This field is required' : null
+}
 
 function BookACallForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const referrer = searchParams.get('from') || '/'
-  
+  const brandLink = searchParams.get('brand_link') || ''
+  const urlSource = searchParams.get('source') || ''
+  const source = urlSource || (brandLink ? 'OurWork — Brand Link' : 'Website')
+
   const [currentStep, setCurrentStep] = useState(0)
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    phoneNumber: '',
-    company: '',
-    companyWebsite: '',
-    roleTitle: '',
-    inquiry: '',
-  })
+  const [formData, setFormData] = useState<FormData>({ name: '', company: '', email: '', phone: '', services: [] })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [showError, setShowError] = useState(false)
+  const [direction, setDirection] = useState(1)
+  const [error, setError] = useState<string | null>(null)
 
-  const currentQuestion = questions[currentStep]
+  const step = steps[currentStep]
+  const progress = ((currentStep + 1) / steps.length) * 100
+  const isLast = currentStep === steps.length - 1
 
-  const handleInputChange = (value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [currentQuestion.id]: value,
-    }))
-    setShowError(false)
-  }
-
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !isCurrentFieldEmpty) {
-      if (currentQuestion.type === 'textarea') {
-        // For textarea, allow Shift+Enter to submit, regular Enter for new line
-        if (e.shiftKey) {
-          e.preventDefault()
-          if (isLastQuestion) {
-            handleSubmit()
-          } else {
-            handleNext()
-          }
-        }
-      } else {
-        // For text inputs, Enter submits
-        e.preventDefault()
-        if (isLastQuestion) {
-          handleSubmit()
-        } else {
-          handleNext()
-        }
-      }
-    }
+  const handleText = (val: string) => { setFormData(prev => ({ ...prev, [step.id]: val })); setError(null) }
+  const toggleService = (s: string) => {
+    setFormData(prev => ({ ...prev, services: prev.services.includes(s) ? prev.services.filter(x => x !== s) : [...prev.services, s] }))
+    setError(null)
   }
 
   const handleNext = () => {
-    if (currentStep < questions.length - 1) {
-      setCurrentStep(currentStep + 1)
-    }
+    const err = validateField(step.id, formData)
+    if (err) { setError(err); return }
+    setError(null)
+    if (!isLast) { setDirection(1); setCurrentStep(s => s + 1) } else handleSubmit()
+  }
+
+  const handleBack = () => {
+    setError(null)
+    if (currentStep > 0) { setDirection(-1); setCurrentStep(s => s - 1) } else router.push('/')
   }
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
-
     try {
-      console.log('Form submitted:', formData)
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setIsSubmitted(true)
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const isLastQuestion = currentStep === questions.length - 1
-  const isCurrentFieldEmpty = !formData[currentQuestion.id as keyof FormData]
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring' }}
-            className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6"
-          >
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </motion.div>
-
-          <h1 className="text-4xl font-serif text-white mb-4">
-            Thank you!
-          </h1>
-          <p className="text-lg text-gray-400 mb-8">
-            We've received your information and we'll get back to you soon.
-          </p>
-          
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => router.push(referrer)}
-            className="px-8 py-3 bg-red-500 text-white rounded-full font-semibold hover:bg-red-600 transition-colors"
-          >
-            Back to Home
-          </motion.button>
-        </motion.div>
-      </div>
-    )
+      await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, brandLink, source }),
+      })
+    } catch (err) { console.error(err) }
+    finally { router.push('/thank-you') }
   }
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4 py-12">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="w-full max-w-xl"
-      >
-        {/* Card Container */}
-        <div className="bg-black border border-gray-800 rounded-2xl p-5">
-          
-          {/* Header with Back Button and Title */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => router.push(referrer)}
-                className="p-1 hover:bg-gray-900 rounded-lg transition-colors"
-              >
-                <ArrowLeft size={18} className="text-gray-400 hover:text-white" />
-              </motion.button>
-              <h1 className="text-lg font-serif text-white">
-                Spiral Up Digital
-              </h1>
-            </div>
-            <div className="text-xl">👋</div>
-          </div>
+    <div className="min-h-screen bg-black flex flex-col" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(229,62,62,0.06) 0%, #000 60%)' }}>
 
-          {/* Step Indicator and Progress */}
-          <div className="mb-6">
-            <p className="text-gray-500 text-xs mb-2">
-              Step {currentStep + 1} of {questions.length}
-            </p>
-            
-            {/* Progress Bar */}
-            <div className="h-1 bg-gray-800 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full"
-                style={{
-                  boxShadow: '0 0 16px rgba(255, 0, 0, 0.6)',
-                }}
-              />
-            </div>
-          </div>
+      {/* Nav */}
+      <div className="flex items-center justify-between px-8 md:px-16 py-6">
+        <button
+          onClick={handleBack}
+          className="flex items-center gap-2 text-sm font-medium transition-colors duration-200 group"
+          style={{ color: '#6b7280' }}
+          onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+          onMouseLeave={e => (e.currentTarget.style.color = '#6b7280')}
+        >
+          <ArrowLeft size={15} className="group-hover:-translate-x-0.5 transition-transform" />
+          {currentStep === 0 ? 'Back to home' : 'Back'}
+        </button>
 
-          {/* Question Section */}
-          <AnimatePresence mode="wait">
+        <div className="flex items-center gap-4">
+          <Image src="/images/Spiral up logo - new.png" alt="Spiral Up Digital" width={28} height={28} className="opacity-80" />
+          <span className="text-xs font-medium" style={{ color: '#4b5563' }}>{currentStep + 1} of {steps.length}</span>
+        </div>
+      </div>
+
+      {/* Progress */}
+      <div className="mx-8 md:mx-16 h-px rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }}>
+        <motion.div
+          className="h-full rounded-full"
+          style={{ background: 'linear-gradient(90deg, #e53e3e, #ff6b6b)' }}
+          animate={{ width: `${progress}%` }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        />
+      </div>
+
+      {/* Step tag */}
+      <div className="px-8 md:px-16 mt-10">
+        <motion.span
+          key={currentStep}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-3 py-1.5 rounded-full"
+          style={{ backgroundColor: 'rgba(229,62,62,0.08)', color: '#e53e3e', border: '1px solid rgba(229,62,62,0.15)' }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+          {step.intro}
+        </motion.span>
+      </div>
+
+      {/* Form body */}
+      <div className="flex-1 flex items-start justify-center px-8 md:px-16 pt-10 pb-32 md:pb-16">
+        <div className="w-full max-w-xl">
+          <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentStep}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="mb-8"
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -30 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
             >
-              {/* Intro Text */}
-              <p className="text-gray-500 text-xs mb-2">
-                {currentQuestion.intro}
-              </p>
-              
-              {/* Main Question */}
-              <h2 className="text-2xl md:text-3xl font-serif text-white mb-6">
-                {currentQuestion.question}
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 leading-tight tracking-tight">
+                {step.question}
               </h2>
 
-              {/* Input Field */}
-              <div>
-                {currentQuestion.type === 'textarea' ? (
-                  <textarea
-                    autoFocus
-                    value={formData[currentQuestion.id as keyof FormData]}
-                    onChange={(e) => handleInputChange(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder={currentQuestion.placeholder}
-                    rows={2}
-                    className="w-full bg-transparent border-b-2 border-gray-700 focus:border-red-500 text-white text-base placeholder-gray-600 focus:outline-none transition-colors py-0 resize-none font-serif leading-tight"
-                  />
-                ) : (
+              {step.type === 'checkbox' ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {SERVICES.map(service => {
+                    const selected = formData.services.includes(service)
+                    return (
+                      <button
+                        key={service}
+                        onClick={() => toggleService(service)}
+                        className="flex items-center justify-between px-4 py-3.5 rounded-xl text-left text-sm font-medium transition-all duration-200"
+                        style={{
+                          backgroundColor: selected ? 'rgba(229,62,62,0.1)' : 'rgba(255,255,255,0.03)',
+                          border: `1px solid ${selected ? 'rgba(229,62,62,0.6)' : 'rgba(255,255,255,0.08)'}`,
+                          color: selected ? '#fff' : '#9ca3af',
+                        }}
+                      >
+                        <span>{service}</span>
+                        <div
+                          className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ml-2 transition-all duration-200"
+                          style={{
+                            backgroundColor: selected ? '#e53e3e' : 'transparent',
+                            border: selected ? '1px solid #e53e3e' : '1px solid rgba(255,255,255,0.15)',
+                          }}
+                        >
+                          {selected && <Check size={11} className="text-white" strokeWidth={3} />}
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              ) : (
+                <div className="relative">
                   <input
                     autoFocus
-                    type={currentQuestion.type}
-                    value={formData[currentQuestion.id as keyof FormData]}
-                    onChange={(e) => handleInputChange(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder={currentQuestion.placeholder}
-                    className="w-full bg-transparent border-b-2 border-gray-700 focus:border-red-500 text-white text-base placeholder-gray-600 focus:outline-none transition-colors py-2 font-serif"
+                    type={step.type}
+                    value={formData[step.id as keyof Omit<FormData, 'services'>]}
+                    onChange={e => handleText(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter') handleNext() }}
+                    placeholder={step.placeholder}
+                    className="w-full bg-transparent pb-4 text-white text-2xl md:text-3xl placeholder-gray-800 outline-none transition-colors duration-200"
+                    style={{ borderBottom: `2px solid ${error ? '#e53e3e' : 'rgba(255,255,255,0.12)'}` }}
                   />
-                )}
-              </div>
-
-              {/* Error Message */}
-              {showError && isCurrentFieldEmpty && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-center gap-2 mt-2 text-red-500 text-xs"
-                >
-                  <AlertCircle size={14} />
-                  <span>Please complete this field</span>
-                </motion.div>
+                </div>
               )}
+
+              {/* Error */}
+              <AnimatePresence>
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="mt-4 text-xs font-medium flex items-center gap-1.5"
+                    style={{ color: '#f87171' }}
+                  >
+                    <span>⚠</span> {error}
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </motion.div>
           </AnimatePresence>
 
-          {/* Continue Button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              if (isCurrentFieldEmpty) {
-                setShowError(true)
-              } else {
-                if (isLastQuestion) {
-                  handleSubmit()
-                } else {
-                  handleNext()
-                }
-              }
-            }}
-            disabled={isSubmitting}
-            className="w-full mt-8 px-8 py-3 text-white rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700"
-            style={{
-              boxShadow: '0 0 16px rgba(255, 0, 0, 0.4)',
-            }}
-          >
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          {/* CTA */}
+          <div className="mt-12 flex items-center gap-4">
+            <motion.button
+              onClick={handleNext}
+              disabled={isSubmitting}
+              className="flex items-center gap-2.5 px-8 py-4 rounded-2xl font-semibold text-white text-sm transition-all duration-200 disabled:opacity-40"
+              style={{ backgroundColor: '#e53e3e', boxShadow: '0 4px 20px rgba(229,62,62,0.3)' }}
+              whileHover={{ scale: 1.03, boxShadow: '0 6px 28px rgba(229,62,62,0.45)' }}
+              whileTap={{ scale: 0.97 }}
+            >
+              {isSubmitting ? (
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
-                Submitting...
-              </>
-            ) : (
-              <>
-                {isLastQuestion ? 'Submit' : 'Continue'}
-                <ArrowRight size={20} />
-              </>
+              ) : (
+                <>{isLast ? 'Submit' : 'Continue'} <ArrowRight size={15} /></>
+              )}
+            </motion.button>
+
+            {!isLast && (
+              <span className="text-xs" style={{ color: '#374151' }}>
+                or press <kbd className="px-1.5 py-0.5 rounded text-xs" style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: '#6b7280', border: '1px solid rgba(255,255,255,0.08)' }}>Enter ↵</kbd>
+              </span>
             )}
-          </motion.button>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }

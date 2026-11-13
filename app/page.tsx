@@ -18,8 +18,8 @@ export default function Home() {
     <main className="bg-black text-white overflow-hidden">
       <Navigation />
       <div id="work"><OurWork /></div>
-      <LogoStrip />
       <FourAngelsVideo />
+      <LogoStrip />
       <ProductionAdvantage />
       <div id="how-it-works"><HowItWorksNew /></div>
       <div id="results"><TheProof /></div>

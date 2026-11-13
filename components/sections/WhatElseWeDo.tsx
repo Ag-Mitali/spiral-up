@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 const services = [
   {
@@ -75,13 +76,13 @@ export default function WhatElseWeDo() {
           </span>
         </motion.div>
 
-        {/* Heading with CTA on right */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 md:mb-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-12"
+          className="mb-12 md:mb-16"
         >
           <div className="flex-1">
             <h2 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
@@ -126,42 +127,6 @@ export default function WhatElseWeDo() {
               Start with the business. Then build the marketing.
             </motion.p>
           </div>
-
-          {/* CTA Button - Right side on desktop */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="lg:flex-shrink-0"
-          >
-            <motion.button
-              className="relative w-full lg:w-auto py-4 lg:py-5 px-8 lg:px-10 rounded-2xl font-bold text-black text-base md:text-lg flex items-center justify-center gap-3 group overflow-hidden whitespace-nowrap"
-              style={{ backgroundColor: '#C8FF00' }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#b8ef00'
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(200,255,0,0.4)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = '#C8FF00'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              <span className="relative z-10">Let&apos;s talk growth</span>
-              <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
-              
-              {/* Pulse ring */}
-              <motion.div
-                className="absolute inset-0 rounded-2xl border-2"
-                style={{ borderColor: '#C8FF00' }}
-                initial={{ scale: 1, opacity: 0.5 }}
-                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </motion.button>
-          </motion.div>
         </motion.div>
 
         {/* Services Grid with enhanced cards */}
@@ -223,6 +188,44 @@ export default function WhatElseWeDo() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button - Below all cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-10 flex justify-center"
+        >
+          <Link href="/book-a-call?source=Services — What Else We Do">
+            <motion.button
+              className="relative w-full lg:w-auto py-4 lg:py-5 px-8 lg:px-10 rounded-2xl font-bold text-black text-base md:text-lg flex items-center justify-center gap-3 group overflow-hidden whitespace-nowrap"
+              style={{ backgroundColor: '#C8FF00' }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#b8ef00'
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(200,255,0,0.4)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#C8FF00'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+            >
+              <span className="relative z-10">Let&apos;s talk growth</span>
+              <ArrowRight size={20} className="relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
+              
+              {/* Pulse ring */}
+              <motion.div
+                className="absolute inset-0 rounded-2xl border-2"
+                style={{ borderColor: '#C8FF00' }}
+                initial={{ scale: 1, opacity: 0.5 }}
+                animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </motion.button>
+          </Link>
+        </motion.div>
 
       </motion.div>
     </section>

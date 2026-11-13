@@ -64,21 +64,6 @@ export default function About() {
               <span className="text-sm font-bold" style={{ color: '#C8FF00' }}>12+</span>
               <span className="text-xs" style={{ color: '#6b7280' }}>years in the industry</span>
             </div>
-
-            {/* CTA */}
-            <Link href="/book-a-call">
-              <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white group transition-colors duration-200 w-fit"
-                style={{ backgroundColor: '#e53e3e' }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
-              >
-                Book a call
-                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </Link>
           </motion.div>
 
           {/* Right — body copy */}
@@ -129,6 +114,21 @@ export default function About() {
                 <span className="font-semibold" style={{ color: '#C8FF00' }}>think about your brand and share ideas with you</span>, even if we don't end up working together.
               </p>
             </div>
+
+            {/* CTA */}
+            <Link href="/book-a-call?source=About — Meet the Founder">
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-white group transition-colors duration-200 w-fit"
+                style={{ backgroundColor: '#e53e3e' }}
+                onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
+                onMouseLeave={e => (e.currentTarget.style.backgroundColor = '#e53e3e')}
+              >
+                Book a no obligation call
+                <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
           </motion.div>
 
         </div>

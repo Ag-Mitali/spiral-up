@@ -133,6 +133,28 @@ export default function FAQ() {
           </motion.div>
 
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-6"
+        >
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-1">Still have questions?</h3>
+          <p className="text-sm text-gray-400 mb-6">Let's talk it through on a call. No pressure, no pitch.</p>
+          <motion.a
+            href="/book-a-call?source=FAQ"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-white text-sm md:text-base whitespace-nowrap"
+            style={{ backgroundColor: '#e53e3e' }}
+            whileHover={{ scale: 1.03, backgroundColor: '#c53030' }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Book a free call
+          </motion.a>
+        </motion.div>
+
       </div>
     </section>
   )

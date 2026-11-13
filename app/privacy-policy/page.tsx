@@ -7,119 +7,68 @@ import Footer from '@/components/Footer'
 
 const sections = [
   {
-    title: '1. Who We Are',
-    content: `Spiral Up Digital is a video production and digital marketing agency based in India. We create cinematic brand films, reels, performance marketing campaigns, and growth strategies for businesses across India and internationally.
-
-If you have any questions about this policy, you can reach us at:
-Email: abhishek@spiralup.digital
-WhatsApp: +91 77100 43210`,
+    title: '1. Terms',
+    content: `By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, applicable laws and regulations and their compliance. If you disagree with any of the stated terms and conditions, you are prohibited from using or accessing this site. The materials contained in this site are secured by relevant copyright and trade mark law.`,
   },
   {
-    title: '2. What Information We Collect',
-    content: `We collect information you voluntarily provide when you:
+    title: '2. Use License',
+    content: `Permission is allowed to temporarily download one duplicate of the materials (data or programming) on Spiral Up Digital's site for individual and non-business use only. This is the just a permit of license and not an exchange of title, and under this permit you may not:
 
-• Fill out a contact or enquiry form on our website
-• Book a discovery call or consultation
-• Send us an email or WhatsApp message
-• Subscribe to updates or newsletters
+• Modify or copy the materials;
+• Use the materials for any commercial use, or for any public presentation (business or non-business);
+• Attempt to decompile or rebuild any product or material contained on Spiral Up Digital's site;
+• Remove any copyright or other restrictive documentations from the materials; or
+• Transfer the materials to someone else or even "mirror" the materials on other server.
 
-The information we may collect includes:
-• Your name and business name
-• Email address and phone number
-• Information about your brand, goals, and marketing needs
-• Any files or assets you choose to share with us
-
-We also automatically collect standard technical data when you visit our website, including your IP address, browser type, pages visited, and time spent — through cookies and analytics tools such as Google Analytics.`,
+This permit might consequently be terminated if you disregard any of these confinements and may be ended by Spiral Up Digital whenever deemed. After permit termination or when your viewing permit is terminated, you must destroy any downloaded materials in your ownership whether in electronic or printed form.`,
   },
   {
-    title: '3. How We Use Your Information',
-    content: `We use the information we collect to:
-
-• Respond to your enquiries and set up calls or consultations
-• Understand your business needs and prepare proposals
-• Deliver the services you have engaged us for
-• Send you relevant updates, case studies, or offers (only if you have opted in)
-• Improve our website and understand how visitors engage with it
-• Meet our legal and contractual obligations
-
-We do not use your data for automated decision-making or profiling.`,
+    title: '3. Disclaimer',
+    content: `The materials on Spiral Up Digital's site are given "as is". Spiral Up Digital makes no guarantees, communicated or suggested, and thus renounces and nullifies every single other warranties, including without impediment, inferred guarantees or states of merchantability, fitness for a specific reason, or non-encroachment of licensed property or other infringement of rights. Further, Spiral Up Digital does not warrant or make any representations concerning the precision, likely results, or unwavering quality of the utilization of the materials on its Internet site or generally identifying with such materials or on any destinations connected to this website.`,
   },
   {
-    title: '4. How We Share Your Information',
-    content: `We do not sell, rent, or trade your personal information to any third party.
-
-We may share your data only with:
-
-• Trusted service providers who assist in running our business (e.g. scheduling tools, email platforms, cloud storage) — they are bound by confidentiality obligations
-• Professional advisors such as accountants or lawyers where legally required
-• Law enforcement or regulatory authorities if required by applicable law
-
-All third parties we work with are required to handle your data securely and in line with applicable data protection laws.`,
+    title: '4. Constraints',
+    content: `In no occasion should Spiral Up Digital or its suppliers subject for any harms (counting, without constraint, harms for loss of information or benefit, or because of business interference,) emerging out of the utilization or powerlessness to utilize the materials on Spiral Up Digital's Internet webpage, regardless of the possibility that Spiral Up Digital or a Spiral Up Digital approved agent has been told orally or in written of the likelihood of such harm. Since a few purviews don't permit constraints on inferred guarantees, or impediments of obligation for weighty or coincidental harms, these confinements may not make a difference to you.`,
   },
   {
-    title: '5. Cookies',
-    content: `Our website uses cookies to improve your browsing experience and to help us understand how visitors use the site.
-
-Types of cookies we use:
-• Essential cookies — necessary for the website to function correctly
-• Analytics cookies — help us understand traffic patterns and page performance (via Google Analytics)
-
-You can control cookie preferences through your browser settings. Disabling certain cookies may affect the functionality of some parts of the site.`,
+    title: '5. Amendments and Errata',
+    content: `The materials showing up on Spiral Up Digital's site could incorporate typographical, or photographic mistakes. Spiral Up Digital does not warrant that any of the materials on its site are exact, finished, or current. Spiral Up Digital may roll out improvements to the materials contained on its site whenever without notification. Spiral Up Digital does not, then again, make any dedication to update the materials.`,
   },
   {
-    title: '6. Data Retention',
-    content: `We retain your personal data only for as long as necessary to fulfil the purposes outlined in this policy, or as required by law.
-
-• Enquiry and contact data: retained for up to 3 years unless we enter into a business relationship, in which case we retain it for the duration of the relationship plus a reasonable period thereafter
-• Analytics data: retained per Google Analytics default settings (up to 26 months)
-
-Once data is no longer needed, we securely delete or anonymise it.`,
+    title: '6. Links',
+    content: `Spiral Up Digital has not checked on the majority of the websites or links connected to its website and is not in charge of the substance of any such connected webpage. The incorporation of any connection does not infer support by Spiral Up Digital of the site. Utilization of any such connected site is at the user's own risk.`,
   },
   {
-    title: '7. Your Rights',
-    content: `Depending on your location, you may have rights regarding your personal data, including:
-
-• The right to access the data we hold about you
-• The right to correct inaccurate or incomplete data
-• The right to request deletion of your data ("right to be forgotten")
-• The right to object to or restrict how we process your data
-• The right to data portability (receiving your data in a structured format)
-• The right to withdraw consent at any time where processing is based on consent
-
-To exercise any of these rights, please contact us at abhishek@spiralup.digital. We will respond within 30 days.`,
+    title: '7. Site Terms of Use Modifications',
+    content: `Spiral Up Digital may update these terms of utilization for its website whenever without notification. By utilizing this site you are consenting to be bound by the then current form of these Terms and Conditions of Use.`,
   },
   {
-    title: '8. Data Security',
-    content: `We take reasonable technical and organisational steps to protect your personal information from unauthorised access, loss, or misuse. These include:
+    title: '8. Governing Law',
+    content: `Any case identifying with Spiral Up Digital's site should be administered by the laws of the country of India Spiral Up Digital State without respect to its contention of law provisions.
 
-• Secure storage of files and communications
-• Limited access to personal data within our team on a need-to-know basis
-• Use of reputable, secure third-party platforms
+General Terms and Conditions applicable to Use of a Web Site.`,
+  },
+]
 
-While we take these precautions, no method of transmission over the internet is completely secure. If you have concerns about data security, please contact us directly.`,
-  },
+const privacySections = [
   {
-    title: '9. Third-Party Links',
-    content: `Our website may contain links to third-party websites such as social media platforms, partner tools, or client case studies. We are not responsible for the privacy practices of those sites and encourage you to review their own privacy policies.`,
-  },
-  {
-    title: '10. Children\'s Privacy',
-    content: `Our services are intended for businesses and professionals. We do not knowingly collect personal information from anyone under the age of 18. If you believe we have inadvertently collected such information, please contact us and we will promptly delete it.`,
-  },
-  {
-    title: '11. Changes to This Policy',
-    content: `We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. When we do, we will update the "Last updated" date at the top of this page. We encourage you to review this page periodically.
+    content: `Your privacy is critical to us. Likewise, we have built up this Policy with the end goal you should see how we gather, utilize, impart and reveal and make utilization of individual data. The following blueprints our privacy policy.
 
-Continued use of our website after changes are posted constitutes your acceptance of the updated policy.`,
-  },
-  {
-    title: '12. Contact Us',
-    content: `If you have any questions, concerns, or requests related to this Privacy Policy, please get in touch:
+• Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
 
-Spiral Up Digital
-Email: abhishek@spiralup.digital
-WhatsApp: +91 77100 43210
-Website: spiralupdigital.com`,
+• We will gather and utilization of individual data singularly with the target of satisfying those reasons indicated by us and for other good purposes, unless we get the assent of the individual concerned or as required by law.
+
+• We will just hold individual data the length of essential for the satisfaction of those reasons.
+
+• We will gather individual data by legal and reasonable means and, where fitting, with the information or assent of the individual concerned.
+
+• Personal information ought to be important to the reasons for which it is to be utilized, and, to the degree essential for those reasons, ought to be exact, finished, and updated.
+
+• We will protect individual data by security shields against misfortune or burglary, and also unapproved access, divulgence, duplicating, use or alteration.
+
+• We will promptly provide customers with access to our policies and procedures for the administration of individual data.
+
+• We are focused on leading our business as per these standards with a specific end goal to guarantee that the privacy of individual data is secure and maintained.`,
   },
 ]
 
@@ -141,7 +90,7 @@ export default function PrivacyPolicyPage() {
             Legal
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
-            Privacy Policy
+            Terms & Conditions
           </h1>
           <p className="text-sm" style={{ color: '#6b7280' }}>
             Last updated: August 2026
@@ -149,21 +98,8 @@ export default function PrivacyPolicyPage() {
           <div className="mt-6 h-px w-full" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
         </motion.div>
 
-        {/* Intro */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-base md:text-lg leading-relaxed mb-14"
-          style={{ color: '#d1d5db' }}
-        >
-          At Spiral Up Digital, we respect your privacy and are committed to handling your personal information responsibly. This Privacy Policy explains what data we collect, why we collect it, how we use it, and your rights in relation to it.
-
-          By using our website or engaging with our services, you agree to the practices described in this policy.
-        </motion.p>
-
-        {/* Sections */}
-        <div className="flex flex-col gap-10">
+        {/* T&C Sections */}
+        <div className="flex flex-col gap-6 mb-20">
           {sections.map((section, i) => (
             <motion.div
               key={i}
@@ -179,6 +115,40 @@ export default function PrivacyPolicyPage() {
               <h2 className="text-lg md:text-xl font-bold text-white mb-4">
                 {section.title}
               </h2>
+              <div className="text-sm md:text-base leading-relaxed whitespace-pre-line" style={{ color: '#9ca3af' }}>
+                {section.content}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Privacy Policy Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-10"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-2">
+            Privacy Policy
+          </h2>
+          <div className="mt-4 h-px w-full" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} />
+        </motion.div>
+
+        {/* Privacy Policy Content */}
+        <div className="flex flex-col gap-6">
+          {privacySections.map((section, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.04 }}
+              className="rounded-2xl p-7"
+              style={{
+                backgroundColor: 'rgba(18,18,18,0.8)',
+                border: '1px solid rgba(255,255,255,0.06)',
+              }}
+            >
               <div className="text-sm md:text-base leading-relaxed whitespace-pre-line" style={{ color: '#9ca3af' }}>
                 {section.content}
               </div>

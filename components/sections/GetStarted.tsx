@@ -48,7 +48,7 @@ export default function GetStarted() {
           className="flex flex-col gap-4 mt-10"
         >
           {/* Primary CTA */}
-          <Link href="/book-a-call">
+          <Link href="/book-a-call?source=Get Started">
             <button
               className="w-full py-4 rounded-2xl font-bold text-white text-base flex items-center justify-center gap-2 group transition-all duration-200"
               style={{ backgroundColor: '#e53e3e' }}

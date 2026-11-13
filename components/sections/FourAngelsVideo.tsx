@@ -2,7 +2,7 @@
 
 export default function FourAngelsVideo() {
   return (
-    <section className="py-16 bg-black">
+    <section className="py-4 md:py-16 bg-black">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gray-900">
           <video

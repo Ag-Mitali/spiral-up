@@ -85,7 +85,7 @@ export default function Footer() {
             <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: '#4b5563' }}>Get in touch</p>
             <ul className="flex flex-col gap-3">
               <li>
-                <Link href="/book-a-call" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
+                <Link href="/book-a-call?source=Footer" className="flex items-center gap-2 text-sm transition-colors duration-200 group" style={{ color: '#9ca3af' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#9ca3af')}>
                   <Calendar size={14} />

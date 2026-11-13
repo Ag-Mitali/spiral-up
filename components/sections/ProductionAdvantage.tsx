@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, Check } from 'lucide-react'
+import Link from 'next/link'
 
 const guarantees = [
   {
@@ -137,23 +138,25 @@ export default function ProductionAdvantage() {
               viewport={{ once: false }}
               transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <button
-                className="w-full py-4 px-8 rounded-2xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 group transition-all duration-200"
-                style={{ backgroundColor: '#e53e3e' }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = '#c53030'
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = '#e53e3e'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = 'none'
-                }}
-              >
-                Let&apos;s talk about your next film
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              <Link href="/book-a-call?source=Production Advantage">
+                <button
+                  className="w-full py-4 px-8 rounded-2xl font-bold text-white text-base md:text-lg flex items-center justify-center gap-3 group transition-all duration-200"
+                  style={{ backgroundColor: '#e53e3e' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = '#c53030'
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = '#e53e3e'
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }}
+                >
+                  Let&apos;s talk about your next film
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
             </motion.div>
           </div>
 

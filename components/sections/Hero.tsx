@@ -108,7 +108,7 @@ export default function Hero() {
               </div>
 
               {/* Book a call */}
-              <Link href="/book-a-call?from=/">
+              <Link href="/book-a-call?source=Hero">
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

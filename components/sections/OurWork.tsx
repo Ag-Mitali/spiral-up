@@ -4,6 +4,7 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Play, Link2, Calendar } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const ACCENT = '#C8FF00'
 
@@ -80,7 +81,7 @@ function VideoCard({ video, isMobile }: {
     <div
       className="relative group cursor-pointer flex-shrink-0"
       style={{
-        width: isMobile ? '100%' : '200px',
+        width: isMobile ? '100%' : '260px',
         aspectRatio: '9/16',
       }}
     >
@@ -168,7 +169,14 @@ function VideoCard({ video, isMobile }: {
 
 export default function OurWork() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [brandLink, setBrandLink] = useState('')
   const scrollRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+
+  const handleContinue = () => {
+    const encoded = encodeURIComponent(brandLink.trim())
+    router.push(`/book-a-call${encoded ? `?brand_link=${encoded}` : ''}`)
+  }
 
   const handleScroll = () => {
     if (!scrollRef.current) return
@@ -289,12 +297,16 @@ export default function OurWork() {
               <Link2 size={15} style={{ color: '#6b7280', flexShrink: 0 }} />
               <input
                 type="url"
+                value={brandLink}
+                onChange={e => setBrandLink(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') handleContinue() }}
                 placeholder="Instagram or product link"
                 className="flex-1 bg-transparent py-4 text-sm text-white placeholder-gray-500 outline-none min-w-0"
               />
             </div>
             <div className="hidden sm:block w-px h-6 bg-white/10 flex-shrink-0" />
             <button
+              onClick={handleContinue}
               className="flex items-center justify-center gap-2 px-6 py-4 font-semibold text-sm text-white rounded-b-2xl sm:rounded-r-full sm:rounded-b-none transition-all flex-shrink-0"
               style={{ backgroundColor: '#e53e3e' }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#c53030')}
@@ -308,7 +320,7 @@ export default function OurWork() {
           {/* Secondary link */}
           <div className="flex justify-center">
             <Link
-              href="/book-a-call"
+              href="/book-a-call?source=OurWork — Prefer to Talk"
               className="flex items-center gap-2 text-sm transition-colors duration-200"
               style={{ color: '#6b7280' }}
               onMouseEnter={e => (e.currentTarget.style.color = '#f0f0f0')}

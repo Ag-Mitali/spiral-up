@@ -58,11 +58,11 @@ export default function LogoStrip() {
               {/* Dot separator */}
               <span className="w-1 h-1 rounded-full bg-red-500/40 flex-shrink-0" />
 
-              <div className="relative h-20 w-auto flex items-center">
+              <div className="relative h-10 md:h-20 w-auto flex items-center">
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  className="h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                  className="h-10 md:h-20 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 rounded-lg"
                   style={{ imageRendering: 'auto' }}
                 />
               </div>

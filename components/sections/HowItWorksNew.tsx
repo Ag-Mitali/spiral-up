@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowDown, Share2, Lightbulb, Video } from 'lucide-react'
+import Link from 'next/link'
 
 const ACCENT = '#C8FF00'
 
@@ -65,23 +66,25 @@ export default function HowItWorksNew() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="hidden md:block flex-shrink-0"
           >
-            <button
-              className="py-4 px-8 rounded-2xl font-bold text-white text-base flex items-center gap-3 group transition-all duration-200"
-              style={{ backgroundColor: '#e53e3e' }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = '#c53030'
-                e.currentTarget.style.transform = 'translateY(-2px)'
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = '#e53e3e'
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              Let&apos;s start with your brand
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link href="/book-a-call?source=How It Works — Desktop">
+              <button
+                className="py-4 px-8 rounded-2xl font-bold text-white text-base flex items-center gap-3 group transition-all duration-200"
+                style={{ backgroundColor: '#e53e3e' }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.backgroundColor = '#c53030'
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.backgroundColor = '#e53e3e'
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                Let&apos;s start with your brand
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </motion.div>
         </div>
 
@@ -259,21 +262,23 @@ export default function HowItWorksNew() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="md:hidden"
         >
-          <button
-            className="w-full py-4 rounded-2xl font-bold text-white text-base flex items-center justify-center gap-3 group transition-all duration-200"
-            style={{ backgroundColor: '#e53e3e' }}
-            onMouseEnter={e => {
-              e.currentTarget.style.backgroundColor = '#c53030'
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.backgroundColor = '#e53e3e'
-              e.currentTarget.style.boxShadow = 'none'
-            }}
-          >
-            Let&apos;s start with your brand
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          <Link href="/book-a-call?source=How It Works — Mobile">
+            <button
+              className="w-full py-4 rounded-2xl font-bold text-white text-base flex items-center justify-center gap-3 group transition-all duration-200"
+              style={{ backgroundColor: '#e53e3e' }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#c53030'
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(229,62,62,0.35)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#e53e3e'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+            >
+              Let&apos;s start with your brand
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </Link>
         </motion.div>
 
       </div>

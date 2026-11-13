@@ -78,7 +78,7 @@ export default function Navigation() {
 
           {/* Book a Call Button */}
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/book-a-call?from=#">
+            <Link href="/book-a-call?source=Navigation">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -191,7 +191,7 @@ export default function Navigation() {
                   className="px-7 pb-8 pt-5"
                   style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
                 >
-                  <Link href="/book-a-call?from=#" onClick={() => setIsOpen(false)} className="block">
+                  <Link href="/book-a-call?source=Navigation" onClick={() => setIsOpen(false)} className="block">
                     <button
                       className="w-full py-4 rounded-2xl font-bold text-white text-sm flex items-center justify-center gap-2 transition-colors duration-200"
                       style={{ backgroundColor: '#e53e3e' }}
