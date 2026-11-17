@@ -30,6 +30,21 @@ export default function FourAngelsVideo() {
             Your browser does not support the video tag.
           </video>
         </div>
+
+        {/* Event Kabaadi video */}
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gray-900 mt-6">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          >
+            <source src="/videos/Event Kabaadi.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </section>
   )
