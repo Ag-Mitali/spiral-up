@@ -39,6 +39,7 @@ export default function FourAngelsVideo() {
             muted
             loop
             playsInline
+            controls
             preload="auto"
           >
             <source src="/videos/Event Kabaadi.mp4" type="video/mp4" />
