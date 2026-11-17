@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
 
-// DEMO calendar link — replace with actual Google Calendar appointment link
-const CALENDAR_URL = 'https://calendar.google.com/calendar/appointments/schedules/demo'
+const CALENDAR_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bm0binkK6m9B9Sch61jAB1uo93EMEUJbBpl4BITJX3ZYW4jgpUm3xRCX3JtG4ip6CqZWqZ_Yy'
 
 declare global {
   interface Window {
