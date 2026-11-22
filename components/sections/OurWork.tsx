@@ -11,7 +11,7 @@ const ACCENT = '#C8FF00'
 const videos = [
   {
     id: 1,
-    brand: 'Fracture with Performance',
+    brand: 'OrthoInsight',
     category: 'Medical',
     desc: 'Builds trust through clinical authority',
     format: 'Brand reel · 30s',
@@ -19,7 +19,7 @@ const videos = [
   },
   {
     id: 4,
-    brand: 'ASUS — Upscaling',
+    brand: 'Asus',
     category: 'Tech',
     desc: 'Showcases durability in real-world use',
     format: 'Brand film · 30s',
@@ -32,30 +32,6 @@ const videos = [
     desc: 'Highlights real ingredients',
     format: 'Product reel · 18s',
     videoSrc: '/videos/Bastar Tsunami.mp4',
-  },
-  {
-    id: 2,
-    brand: 'Devinoire',
-    category: 'D2C',
-    desc: 'Makes everyday moments crave-worthy',
-    format: 'Product reel · 24s',
-    videoSrc: null,
-  },
-  {
-    id: 3,
-    brand: 'ORACURA',
-    category: 'FMCG',
-    desc: 'Showcases product texture and freshness',
-    format: 'Product reel · 22s',
-    videoSrc: null,
-  },
-  {
-    id: 5,
-    brand: 'Shine Divine',
-    category: 'Jewellery',
-    desc: 'Brings the collection to life',
-    format: 'Product reel · 20s',
-    videoSrc: null,
   },
 ]
 
@@ -86,7 +62,7 @@ function VideoCard({ video, isMobile }: {
       }}
     >
       <div
-        className="relative w-full h-full rounded-2xl overflow-hidden transition-all duration-300"
+        className={`relative w-full h-full overflow-hidden transition-all duration-300 ${isMobile ? 'rounded-2xl' : 'rounded-l-2xl'}`}
         style={{
           backgroundColor: '#0f0f0f',
           border: '1.5px solid rgba(255,255,255,0.1)',
@@ -165,6 +141,24 @@ function VideoCard({ video, isMobile }: {
       </div>
     </div>
   )
+}
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.18,
+    },
+  },
+}
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -80 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
 }
 
 export default function OurWork() {
@@ -257,24 +251,62 @@ export default function OurWork() {
         </div>
 
         {/* ── DESKTOP: horizontal scroll ── */}
-        <div
-          className="hidden lg:flex gap-4 overflow-x-auto pb-4 mb-12"
-          style={{ scrollbarWidth: 'none', paddingTop: '8px' }}
+        <motion.div
+          className="hidden lg:flex gap-6 pb-4 mb-12"
+          style={{ paddingTop: '8px', overflow: 'visible' }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
         >
           {videos.map((video, index) => (
             <motion.div
               key={video.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.06, duration: 0.5 }}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="flex-shrink-0"
+              variants={cardVariants}
+              whileHover={{ y: -10, transition: { duration: 0.3, ease: 'easeOut' } }}
+              className="flex-shrink-0 flex items-stretch gap-0 group cursor-pointer"
             >
-              <VideoCard video={video} isMobile={false} />
+              {/* Reel */}
+              <div>
+                <VideoCard video={video} isMobile={false} />
+              </div>
+
+              {/* Info panel — attached to right of reel */}
+              <div
+                className="w-44 flex flex-col justify-between px-5 py-6 rounded-r-2xl relative overflow-hidden transition-all duration-300"
+                style={{
+                  background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+                  border: '1.5px solid rgba(255,255,255,0.07)',
+                  borderLeft: 'none',
+                }}
+              >
+                {/* Top — category */}
+                <div>
+                  <span
+                    className="inline-block text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-md mb-4"
+                    style={{ backgroundColor: 'rgba(200,255,0,0.08)', color: ACCENT, border: `1px solid rgba(200,255,0,0.2)` }}
+                  >
+                    {video.category}
+                  </span>
+                  <p className="text-white font-bold text-base leading-snug mb-2">{video.brand}</p>
+                  <p className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>{video.desc}</p>
+                </div>
+
+                {/* Bottom — format */}
+                <div>
+                  <div className="h-px w-full mb-4" style={{ backgroundColor: 'rgba(255,255,255,0.06)' }} />
+                  <p className="text-xs font-medium" style={{ color: '#4b5563' }}>{video.format}</p>
+
+                  {/* Decorative accent dot */}
+                  <div
+                    className="absolute bottom-5 right-5 w-16 h-16 rounded-full opacity-10"
+                    style={{ background: `radial-gradient(circle, ${ACCENT}, transparent)` }}
+                  />
+                </div>
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA below videos */}
         <motion.div

@@ -1,21 +1,32 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { CheckCircle } from 'lucide-react'
+import { useSearchParams } from 'next/navigation'
 
-const CALENDAR_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0bm0binkK6m9B9Sch61jAB1uo93EMEUJbBpl4BITJX3ZYW4jgpUm3xRCX3JtG4ip6CqZWqZ_Yy'
+const CAL_BASE_URL = 'https://calendly.com/mitali-spiralup/30min'
 
 declare global {
-  interface Window {
-    fbq?: (...args: any[]) => void
-  }
+  interface Window { fbq?: (...args: any[]) => void }
 }
 
-export default function ThankYouPage() {
+function ThankYouContent() {
+  const searchParams = useSearchParams()
+  const name = searchParams.get('name') || ''
+  const email = searchParams.get('email') || ''
+
+  // Build calendar URL with pre-filled params if available
+  const calendarUrl = (() => {
+    if (!name && !email) return CAL_BASE_URL
+    const params = new URLSearchParams()
+    if (name) params.set('name', name)
+    if (email) params.set('email', email)
+    return `${CAL_BASE_URL}?${params.toString()}`
+  })()
+
   useEffect(() => {
-    // Fire Meta Pixel Lead event
     if (typeof window !== 'undefined' && window.fbq) {
       window.fbq('track', 'Lead')
     }
@@ -49,12 +60,25 @@ export default function ThankYouPage() {
           </div>
 
           <h1 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
-            We've got your details.<br />
+            {name ? `Thanks, ${name.split(' ')[0]}.` : "We've got your details."}<br />
             <span style={{ color: '#e53e3e' }}>Now let's find a time.</span>
           </h1>
           <p className="text-gray-400 text-sm md:text-base max-w-lg">
             Pick a date and time below that works for you. It's a no-obligation, 20-minute call — no pitch, just a conversation.
           </p>
+
+          {/* Pre-fill notice */}
+          {name && email && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="mt-4 inline-flex items-center gap-2 text-xs px-3 py-2 rounded-full"
+              style={{ backgroundColor: 'rgba(229,62,62,0.08)', border: '1px solid rgba(229,62,62,0.2)', color: '#9ca3af' }}
+            >
+              ✓ Your name and email are pre-filled below
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Calendar embed */}
@@ -66,7 +90,7 @@ export default function ThankYouPage() {
           style={{ border: '1px solid rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.02)' }}
         >
           <iframe
-            src={CALENDAR_URL}
+            src={calendarUrl}
             width="100%"
             height="600"
             frameBorder="0"
@@ -94,5 +118,17 @@ export default function ThankYouPage() {
 
       </div>
     </div>
+  )
+}
+
+export default function ThankYouPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-red-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <ThankYouContent />
+    </Suspense>
   )
 }

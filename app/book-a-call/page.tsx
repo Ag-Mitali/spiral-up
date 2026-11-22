@@ -90,7 +90,13 @@ function BookACallForm() {
         body: JSON.stringify({ ...formData, brandLink, source }),
       })
     } catch (err) { console.error(err) }
-    finally { router.push('/thank-you') }
+    finally {
+      const params = new URLSearchParams({
+        name: formData.name,
+        email: formData.email,
+      })
+      router.push(`/thank-you?${params.toString()}`)
+    }
   }
 
   return (
