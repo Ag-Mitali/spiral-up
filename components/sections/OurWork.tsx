@@ -259,7 +259,7 @@ export default function OurWork() {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {videos.map((video, index) => (
+          {videos.map((video) => (
             <motion.div
               key={video.id}
               variants={cardVariants}
