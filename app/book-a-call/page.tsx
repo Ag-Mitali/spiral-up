@@ -50,7 +50,7 @@ function BookACallForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const brandLink = searchParams.get('brand_link') || ''
-  const urlSource = searchParams.get('source') || ''
+  const urlSource = searchParams.get('source') || searchParams.get('from') || ''
   const source = urlSource || (brandLink ? 'OurWork — Brand Link' : 'Website')
 
   const [currentStep, setCurrentStep] = useState(0)

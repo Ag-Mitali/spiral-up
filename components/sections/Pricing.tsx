@@ -104,7 +104,7 @@ export default function Pricing() {
             </motion.div>
 
             {/* CTA Button */}
-            <Link href="/book-a-call?from=#pricing">
+            <Link href="/book-a-call?source=Pricing">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

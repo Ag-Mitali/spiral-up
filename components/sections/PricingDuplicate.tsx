@@ -100,7 +100,7 @@ export default function PricingDuplicate() {
             </motion.div>
 
             {/* CTA Button */}
-            <Link href="/book-a-call?from=#pricing">
+            <Link href="/book-a-call?source=Pricing">
               <button
                 className="px-6 py-3 border-2 border-red-500 text-red-500 rounded-lg font-semibold hover:bg-red-500/10 transition-colors flex items-center justify-center gap-3 group w-fit"
               >

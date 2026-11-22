@@ -203,7 +203,7 @@ export default function HowItWorks() {
             </div>
           </motion.button>
 
-          <Link href="/book-a-call?from=#howitworks">
+          <Link href="/book-a-call?source=How It Works">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

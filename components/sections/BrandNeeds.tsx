@@ -54,7 +54,7 @@ export default function BrandNeeds() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <Link href="/book-a-call?from=#brandneeds">
+              <Link href="/book-a-call?source=Brand Needs">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
